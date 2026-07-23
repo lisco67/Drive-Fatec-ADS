@@ -20,5 +20,5 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 💻 [Sobre estágio](/orientacao-estagio.md)  
 
 📝 Projetos pedagógicos e ementas:  
-    |_ [Grade antiga](/proj-pedagogico-ads-antigo.pdf)  
-    |_ [Grade nova](/proj-pedagogico-ads-novo.pdf)
+    |_ [Grade antiga](/curriculo/proj-pedagogico-ads-antigo.pdf)  
+    |_ [Grade nova](/curriculo/proj-pedagogico-ads-novo.pdf)
