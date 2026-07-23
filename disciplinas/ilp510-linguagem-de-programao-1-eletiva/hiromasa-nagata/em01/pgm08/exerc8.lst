@@ -1,0 +1,93 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 18:29 Page   1
+*                                      EXERC8.CBL
+* Options: LIST(EXERC8.LST) ASMLIST(EXERC8.GRP)
+     1 IDENTIFICATION  DIVISION.
+     2 PROGRAM-ID.     EXERC8.
+     3 AUTHOR.         YHAGO PESSOA.
+     4 INSTALLATION.   FATEC-SP.
+     5 DATE-WRITTEN.   18/03/2025.
+     6 DATE-COMPILED. 18-Mar-25 18:29.
+     7 SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+     8
+     9 ENVIRONMENT     DIVISION.
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER.  MY-PC.
+    12 OBJECT-COMPUTER.  MY-PC.
+    13 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16 FILE-CONTROL.
+    17     SELECT   CADFUN        ASSIGN      TO       DISK
+    18     ORGANIZATION  IS         LINE        SEQUENTIAL.
+    19     SELECT   CADSAI        ASSIGN     TO       DISK
+    20     ORGANIZATION  IS         LINE        SEQUENTIAL.
+    21
+    22 DATA           DIVISION.
+    23 FILE SECTION.
+    24
+    25 FD  CADFUN
+    26     LABEL   RECORD  STANDARD
+    27     VALUE    OF FILE-ID    IS          "CADALU.DAT".
+    28 01  REG-ENT.
+    29     02 NUM-ENT           PIC 9(05).
+    30     02 NOME-ENT          PIC X(20).
+    31     02 SAL-ENT           PIC 9(05)V99.
+    32
+    33 FD  CADSAI
+    34     LABEL   RECORD  STANDARD
+    35     VALUE   OF FILE-ID    IS   "CADSAI.DAT".
+    36 01  REG-SAI.
+    37     02 NUM-SAI           PIC 9(05).
+    38     02 NOME-SAI          PIC X(20).
+    39     02 SAL-SAI           PIC 9(05)V99.
+    40
+    41 WORKING-STORAGE SECTION.
+    42     77 FIM-ARQ          PIC X(03)    VALUE "NAO".
+    43     77 SAL-CONT         PIC 9(05)V99.
+    44
+    45
+    46 PROCEDURE        DIVISION.
+    47
+    48 EXEMPLO.
+    49     PERFORM INICIO.
+    50     PERFORM PRINCIPAL
+    51       UNTIL FIM-ARQ EQUAL "SIM".
+    52     PERFORM TERMINO
+    53     STOP RUN.
+    54 INICIO.
+    55     OPEN INPUT CADFUN
+    56          OUTPUT CADSAI.
+    57     PERFORM LEITURA.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 18:29 Page   2
+*                                      EXERC8.CBL
+    58
+    59     LEITURA.
+    60         READ CADFUN
+    61            AT END
+    62            MOVE "SIM" TO FIM-ARQ.
+    63 PRINCIPAL.
+    64     PERFORM GRAVACAO.
+    65     PERFORM LEITURA.
+    66
+    67     GRAVACAO.
+    68         IF SAL-ENT <= 1000
+    69             COMPUTE SAL-CONT = SAL-ENT * (112/100)
+    70         ELSE IF SAL-ENT <= 2000
+    71             COMPUTE SAL-CONT = SAL-ENT * (111/100)
+    72         ELSE
+    73             COMPUTE SAL-CONT= SAL-ENT * (110/100)
+    74         END-IF.
+    75         MOVE NUM-ENT TO NUM-SAI
+    76         MOVE NOME-ENT TO NOME-SAI
+    77         MOVE SAL-CONT TO SAL-SAI
+    78         WRITE REG-SAI.
+    79
+    80 TERMINO.
+    81     CLOSE CADFUN
+    82           CADSAI.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1044     Code:         422     Dictionary:        1129

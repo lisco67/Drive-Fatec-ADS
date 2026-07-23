@@ -1,0 +1,469 @@
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0001
+* Address        Code
+*
+    C01E01:
+00000000  5B                      POP     BX
+00000001  81C30000                ADD     BX,OFFSET Codeseg
+00000005  3BD8                    CMP     BX,AX
+00000007  7515                    JNE     001E
+00000009  5A                      POP     DX
+0000000A  59                      POP     CX
+0000000B  3A6E25                  CMP     CH,[BP+25]
+0000000E  750C                    JNE     001C
+00000010  3A4E25                  CMP     CL,[BP+25]
+00000013  7502                    JNE     0017
+00000015  FFE2                    JMP     DX
+00000017  8AC1                    MOV     AL,CL
+00000019  E90420                  JMP     2020
+0000001C  51                      PUSH    CX
+0000001D  52                      PUSH    DX
+0000001E  81EB0000                SUB     BX,OFFSET Codeseg
+00000022  53                      PUSH    BX
+00000023  BB0000                  MOV     BX,0000
+00000026  53                      PUSH    BX
+00000027  FFE0                    JMP     AX
+00000029  1E                      PUSH    DS
+0000002A  56                      PUSH    SI
+0000002B  57                      PUSH    DI
+0000002C  B80000                  MOV     AX,0000
+0000002F  50                      PUSH    AX
+00000030  B80000                  MOV     AX,SEG Data_Segment_01
+00000033  50                      PUSH    AX
+00000034  BB0000                  MOV     BX,OFFSET Data_Segment
+00000037  53                      PUSH    BX
+00000038  81EC6400                SUB     SP,0064
+0000003C  55                      PUSH    BP
+0000003D  89E5                    MOV     BP,SP
+0000003F  81ECA000                SUB     SP,00A0
+00000043  B80000                  MOV     AX,SEG Handle
+00000046  8ED8                    MOV     DS,AX
+00000048  8CCB                    MOV     BX,CS
+0000004A  BAAF00                  MOV     DX,00AF
+0000004D  9A00000000              CALL    _MAKEENV
+00000052  B80000                  MOV     AX,SEG I_Codes
+00000055  8ED8                    MOV     DS,AX
+00000057  B80000                  MOV     AX,OFFSET Lpt
+0000005A  B220                    MOV     DL,20
+0000005C  9A00000000              CALL    _INITDAT
+00000061  B80000                  MOV     AX,0000
+00000064  50                      PUSH    AX
+00000065  B80000                  MOV     AX,OFFSET Chkstk
+00000068  50                      PUSH    AX
+00000069  E94C00                  JMP     00B8
+0000006C  1E                      PUSH    DS
+0000006D  56                      PUSH    SI
+0000006E  57                      PUSH    DI
+0000006F  B80000                  MOV     AX,0000
+00000072  50                      PUSH    AX
+00000073  B80000                  MOV     AX,SEG Data_Segment_01
+00000076  50                      PUSH    AX
+00000077  BB0000                  MOV     BX,OFFSET Data_Segment
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0002
+* Address        Code
+0000007A  53                      PUSH    BX
+0000007B  81EC6400                SUB     SP,0064
+0000007F  55                      PUSH    BP
+00000080  89E5                    MOV     BP,SP
+00000082  81ECA000                SUB     SP,00A0
+00000086  B80000                  MOV     AX,SEG Handle
+00000089  8ED8                    MOV     DS,AX
+0000008B  8CCB                    MOV     BX,CS
+0000008D  BAAF00                  MOV     DX,00AF
+00000090  9A00000000              CALL    _MAKEENV
+00000095  B80000                  MOV     AX,SEG I_Codes
+00000098  8ED8                    MOV     DS,AX
+0000009A  B80000                  MOV     AX,OFFSET Lpt
+0000009D  B220                    MOV     DL,20
+0000009F  9A00000000              CALL    _INITDAT
+000000A4  B80000                  MOV     AX,0000
+000000A7  50                      PUSH    AX
+000000A8  B80000                  MOV     AX,OFFSET Chkstk
+000000AB  50                      PUSH    AX
+000000AC  E9E803                  JMP     0497
+000000AF  455845524331202020                     [EXERC1          ]
+    Entry EXERC1:
+000000B8  8E5E68                  MOV     DS,[BP+68]
+000000BB  8E4668                  MOV     ES,[BP+68]
+000000BE  EB5E                    JMP     I0048
+    I0007:
+000000C0  803EF404FF              CMP     BYTE PTR [04F4],FF
+000000C5  7453                    JE      011A
+000000C7  8CDA                    MOV     DX,DS
+000000C9  BE9402                  MOV     SI,0294
+000000CC  BF6C02                  MOV     DI,026C
+000000CF  9A00000000              CALL    _SETPTR
+000000D4  8CDA                    MOV     DX,DS
+000000D6  BE2804                  MOV     SI,0428
+000000D9  BF6802                  MOV     DI,0268
+000000DC  9A00000000              CALL    _SETPTR
+000000E1  8CDA                    MOV     DX,DS
+000000E3  BE3C03                  MOV     SI,033C
+000000E6  BF1403                  MOV     DI,0314
+000000E9  9A00000000              CALL    _SETPTR
+000000EE  8CDA                    MOV     DX,DS
+000000F0  BE6804                  MOV     SI,0468
+000000F3  BF1003                  MOV     DI,0310
+000000F6  9A00000000              CALL    _SETPTR
+000000FB  8CDA                    MOV     DX,DS
+000000FD  BEE403                  MOV     SI,03E4
+00000100  BFBC03                  MOV     DI,03BC
+00000103  9A00000000              CALL    _SETPTR
+00000108  8CDA                    MOV     DX,DS
+0000010A  BEA804                  MOV     SI,04A8
+0000010D  BFB803                  MOV     DI,03B8
+00000110  9A00000000              CALL    _SETPTR
+00000115  C606F404FF              MOV     BYTE PTR [04F4],FF
+0000011A  B81E01                  MOV     AX,011E
+0000011D  C3                      RET
+    I0048:
+0000011E  E89FFF                  CALL    I0007
+00000121  E83300                  CALL    I006A
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0003
+* Address        Code
+00000124  A1EA04                  MOV     AX,[04EA]
+00000127  3B06F204                CMP     AX,[04F2]
+0000012B  7507                    JNE     0134
+0000012D  A1E804                  MOV     AX,[04E8]
+00000130  3B06F004                CMP     AX,[04F0]
+00000134  750D                    JNE     0143
+00000136  B8FFFF                  MOV     AX,FFFF
+00000139  B90200                  MOV     CX,0002
+0000013C  BFF004                  MOV     DI,04F0
+0000013F  F3AF            REP     SCASW
+00000141  7405                    JE      0148
+00000143  E88D01                  CALL    I012F
+00000146  EBDC                    JMP     0124
+00000148  E86902                  CALL    I01AB
+0000014B  31D2                    XOR     DX,DX
+0000014D  A1F804                  MOV     AX,[04F8]
+00000150  86C4                    XCHG    AL,AH
+00000152  9A00000000              CALL    _STOPRUN
+    I006A:
+00000157  C606480200              MOV     BYTE PTR [0248],00
+0000015C  B000                    MOV     AL,00
+0000015E  BE3002                  MOV     SI,0230
+00000161  9A00000000              CALL    _FILE
+00000166  803E300232              CMP     BYTE PTR [0230],32
+0000016B  8E4668                  MOV     ES,[BP+68]
+0000016E  7619                    JBE     0189
+00000170  89665E                  MOV     [BP+5E],SP
+00000173  1E                      PUSH    DS
+00000174  B83002                  MOV     AX,0230
+00000177  50                      PUSH    AX
+00000178  B90100                  MOV     CX,0001
+0000017B  9A00000000              CALL    CBL_FILE_ERROR
+00000180  8E5E68                  MOV     DS,[BP+68]
+00000183  8E4668                  MOV     ES,[BP+68]
+00000186  8B665E                  MOV     SP,[BP+5E]
+00000189  C606F00200              MOV     BYTE PTR [02F0],00
+0000018E  B000                    MOV     AL,00
+00000190  BED802                  MOV     SI,02D8
+00000193  9A00000000              CALL    _FILE
+00000198  803ED80232              CMP     BYTE PTR [02D8],32
+0000019D  8E4668                  MOV     ES,[BP+68]
+000001A0  7619                    JBE     01BB
+000001A2  89665E                  MOV     [BP+5E],SP
+000001A5  1E                      PUSH    DS
+000001A6  B8D802                  MOV     AX,02D8
+000001A9  50                      PUSH    AX
+000001AA  B90100                  MOV     CX,0001
+000001AD  9A00000000              CALL    CBL_FILE_ERROR
+000001B2  8E5E68                  MOV     DS,[BP+68]
+000001B5  8E4668                  MOV     ES,[BP+68]
+000001B8  8B665E                  MOV     SP,[BP+5E]
+000001BB  C606980300              MOV     BYTE PTR [0398],00
+000001C0  B001                    MOV     AL,01
+000001C2  BE8003                  MOV     SI,0380
+000001C5  9A00000000              CALL    _FILE
+000001CA  803E800332              CMP     BYTE PTR [0380],32
+000001CF  8E4668                  MOV     ES,[BP+68]
+000001D2  7619                    JBE     01ED
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0004
+* Address        Code
+000001D4  89665E                  MOV     [BP+5E],SP
+000001D7  1E                      PUSH    DS
+000001D8  B88003                  MOV     AX,0380
+000001DB  50                      PUSH    AX
+000001DC  B90100                  MOV     CX,0001
+000001DF  9A00000000              CALL    CBL_FILE_ERROR
+000001E4  8E5E68                  MOV     DS,[BP+68]
+000001E7  8E4668                  MOV     ES,[BP+68]
+000001EA  8B665E                  MOV     SP,[BP+5E]
+000001ED  E80700                  CALL    I00C5
+000001F0  E87200                  CALL    I00FA
+    I00C5:
+000001F3  B8F701                  MOV     AX,01F7
+000001F6  C3                      RET
+000001F7  B0F5                    MOV     AL,F5
+000001F9  BE3002                  MOV     SI,0230
+000001FC  9A00000000              CALL    _FILE
+00000201  803E300232              CMP     BYTE PTR [0230],32
+00000206  8E4668                  MOV     ES,[BP+68]
+00000209  7619                    JBE     0224
+0000020B  89665E                  MOV     [BP+5E],SP
+0000020E  1E                      PUSH    DS
+0000020F  B83002                  MOV     AX,0230
+00000212  50                      PUSH    AX
+00000213  B90100                  MOV     CX,0001
+00000216  9A00000000              CALL    CBL_FILE_ERROR
+0000021B  8E5E68                  MOV     DS,[BP+68]
+0000021E  8E4668                  MOV     ES,[BP+68]
+00000221  8B665E                  MOV     SP,[BP+5E]
+00000224  803E300231              CMP     BYTE PTR [0230],31
+00000229  770F                    JA      023A
+0000022B  803E300231              CMP     BYTE PTR [0230],31
+00000230  7508                    JNE     023A
+00000232  B8FFFF                  MOV     AX,FFFF
+00000235  BFE804                  MOV     DI,04E8
+00000238  AB                      STOSW
+00000239  AB                      STOSW
+0000023A  B8FFFF                  MOV     AX,FFFF
+0000023D  B90200                  MOV     CX,0002
+00000240  BFE804                  MOV     DI,04E8
+00000243  F3AF            REP     SCASW
+00000245  741A                    JE      0261
+00000247  B80303                  MOV     AX,0303
+0000024A  BF2B04                  MOV     DI,042B
+0000024D  9A00000000              CALL    _XLD2DUD
+00000252  B003                    MOV     AL,03
+00000254  B90400                  MOV     CX,0004
+00000257  B218                    MOV     DL,18
+00000259  BFE804                  MOV     DI,04E8
+0000025C  9A00000000              CALL    _XSTRAN
+    I00FA:
+00000261  B86502                  MOV     AX,0265
+00000264  C3                      RET
+00000265  B0F5                    MOV     AL,F5
+00000267  BED802                  MOV     SI,02D8
+0000026A  9A00000000              CALL    _FILE
+0000026F  803ED80232              CMP     BYTE PTR [02D8],32
+00000274  8E4668                  MOV     ES,[BP+68]
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0005
+* Address        Code
+00000277  7619                    JBE     0292
+00000279  89665E                  MOV     [BP+5E],SP
+0000027C  1E                      PUSH    DS
+0000027D  B8D802                  MOV     AX,02D8
+00000280  50                      PUSH    AX
+00000281  B90100                  MOV     CX,0001
+00000284  9A00000000              CALL    CBL_FILE_ERROR
+00000289  8E5E68                  MOV     DS,[BP+68]
+0000028C  8E4668                  MOV     ES,[BP+68]
+0000028F  8B665E                  MOV     SP,[BP+5E]
+00000292  803ED80231              CMP     BYTE PTR [02D8],31
+00000297  770F                    JA      02A8
+00000299  803ED80231              CMP     BYTE PTR [02D8],31
+0000029E  7508                    JNE     02A8
+000002A0  B8FFFF                  MOV     AX,FFFF
+000002A3  BFF004                  MOV     DI,04F0
+000002A6  AB                      STOSW
+000002A7  AB                      STOSW
+000002A8  B8FFFF                  MOV     AX,FFFF
+000002AB  B90200                  MOV     CX,0002
+000002AE  BFF004                  MOV     DI,04F0
+000002B1  F3AF            REP     SCASW
+000002B3  741A                    JE      02CF
+000002B5  B80303                  MOV     AX,0303
+000002B8  BF6B04                  MOV     DI,046B
+000002BB  9A00000000              CALL    _XLD2DUD
+000002C0  B003                    MOV     AL,03
+000002C2  B90400                  MOV     CX,0004
+000002C5  B218                    MOV     DL,18
+000002C7  BFF004                  MOV     DI,04F0
+000002CA  9A00000000              CALL    _XSTRAN
+    I012F:
+000002CF  B8D302                  MOV     AX,02D3
+000002D2  C3                      RET
+000002D3  A1EA04                  MOV     AX,[04EA]
+000002D6  3B06F204                CMP     AX,[04F2]
+000002DA  7507                    JNE     02E3
+000002DC  A1E804                  MOV     AX,[04E8]
+000002DF  3B06F004                CMP     AX,[04F0]
+    I0130:
+000002E3  8E4668                  MOV     ES,[BP+68]
+000002E6  8E4668                  MOV     ES,[BP+68]
+000002E9  750B                    JNE     02F6
+000002EB  E83400                  CALL    I015C
+000002EE  E806FF                  CALL    I00C5
+000002F1  E871FF                  CALL    I00FA
+000002F4  EB28                    JMP     031E
+000002F6  B90400                  MOV     CX,0004
+000002F9  BEE804                  MOV     SI,04E8
+000002FC  BFF004                  MOV     DI,04F0
+000002FF  F3A6            REP     CMPSB
+00000301  7308                    JAE     030B
+00000303  E83400                  CALL    I016B
+00000306  E8EEFE                  CALL    I00C5
+00000309  EB13                    JMP     031E
+0000030B  B90400                  MOV     CX,0004
+0000030E  BEF004                  MOV     SI,04F0
+00000311  BFE804                  MOV     DI,04E8
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0006
+* Address        Code
+00000314  F3A6            REP     CMPSB
+00000316  7306                    JAE     031E
+00000318  E85C00                  CALL    I018B
+0000031B  E847FF                  CALL    I00FA
+    I015C:
+0000031E  B82203                  MOV     AX,0322
+00000321  C3                      RET
+00000322  E81500                  CALL    I016B
+00000325  E84F00                  CALL    I018B
+    I0163:
+00000328  B82C03                  MOV     AX,032C
+0000032B  C3                      RET
+0000032C  E80B00                  CALL    I016B
+    I0167:
+0000032F  B83303                  MOV     AX,0333
+00000332  C3                      RET
+00000333  E84100                  CALL    I018B
+    I016B:
+00000336  B83A03                  MOV     AX,033A
+00000339  C3                      RET
+0000033A  B91A00                  MOV     CX,001A
+0000033D  BE2804                  MOV     SI,0428
+00000340  BFA804                  MOV     DI,04A8
+00000343  F3A5            REP     MOVSW
+00000345  A4                      MOVSB
+00000346  B0F3                    MOV     AL,F3
+00000348  BE8003                  MOV     SI,0380
+0000034B  9A00000000              CALL    _FILE
+00000350  803E800332              CMP     BYTE PTR [0380],32
+00000355  8E4668                  MOV     ES,[BP+68]
+00000358  7619                    JBE     0373
+0000035A  89665E                  MOV     [BP+5E],SP
+0000035D  1E                      PUSH    DS
+0000035E  B88003                  MOV     AX,0380
+00000361  50                      PUSH    AX
+00000362  B90100                  MOV     CX,0001
+00000365  9A00000000              CALL    CBL_FILE_ERROR
+0000036A  8E5E68                  MOV     DS,[BP+68]
+0000036D  8E4668                  MOV     ES,[BP+68]
+00000370  8B665E                  MOV     SP,[BP+5E]
+    I018B:
+00000373  B87703                  MOV     AX,0377
+00000376  C3                      RET
+00000377  B91A00                  MOV     CX,001A
+0000037A  BE6804                  MOV     SI,0468
+0000037D  BFA804                  MOV     DI,04A8
+00000380  F3A5            REP     MOVSW
+00000382  A4                      MOVSB
+00000383  B0F3                    MOV     AL,F3
+00000385  BE8003                  MOV     SI,0380
+00000388  9A00000000              CALL    _FILE
+0000038D  803E800332              CMP     BYTE PTR [0380],32
+00000392  8E4668                  MOV     ES,[BP+68]
+00000395  7619                    JBE     03B0
+00000397  89665E                  MOV     [BP+5E],SP
+0000039A  1E                      PUSH    DS
+0000039B  B88003                  MOV     AX,0380
+0000039E  50                      PUSH    AX
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0007
+* Address        Code
+0000039F  B90100                  MOV     CX,0001
+000003A2  9A00000000              CALL    CBL_FILE_ERROR
+000003A7  8E5E68                  MOV     DS,[BP+68]
+000003AA  8E4668                  MOV     ES,[BP+68]
+000003AD  8B665E                  MOV     SP,[BP+5E]
+    I01AB:
+000003B0  B8B403                  MOV     AX,03B4
+000003B3  C3                      RET
+000003B4  B080                    MOV     AL,80
+000003B6  BE3002                  MOV     SI,0230
+000003B9  9A00000000              CALL    _FILE
+000003BE  803E300232              CMP     BYTE PTR [0230],32
+000003C3  8E4668                  MOV     ES,[BP+68]
+000003C6  7619                    JBE     03E1
+000003C8  89665E                  MOV     [BP+5E],SP
+000003CB  1E                      PUSH    DS
+000003CC  B83002                  MOV     AX,0230
+000003CF  50                      PUSH    AX
+000003D0  B90100                  MOV     CX,0001
+000003D3  9A00000000              CALL    CBL_FILE_ERROR
+000003D8  8E5E68                  MOV     DS,[BP+68]
+000003DB  8E4668                  MOV     ES,[BP+68]
+000003DE  8B665E                  MOV     SP,[BP+5E]
+000003E1  B080                    MOV     AL,80
+000003E3  BED802                  MOV     SI,02D8
+000003E6  9A00000000              CALL    _FILE
+000003EB  803ED80232              CMP     BYTE PTR [02D8],32
+000003F0  8E4668                  MOV     ES,[BP+68]
+000003F3  7619                    JBE     040E
+000003F5  89665E                  MOV     [BP+5E],SP
+000003F8  1E                      PUSH    DS
+000003F9  B8D802                  MOV     AX,02D8
+000003FC  50                      PUSH    AX
+000003FD  B90100                  MOV     CX,0001
+00000400  9A00000000              CALL    CBL_FILE_ERROR
+00000405  8E5E68                  MOV     DS,[BP+68]
+00000408  8E4668                  MOV     ES,[BP+68]
+0000040B  8B665E                  MOV     SP,[BP+5E]
+0000040E  B080                    MOV     AL,80
+00000410  BE8003                  MOV     SI,0380
+00000413  9A00000000              CALL    _FILE
+00000418  803E800332              CMP     BYTE PTR [0380],32
+0000041D  8E4668                  MOV     ES,[BP+68]
+00000420  7619                    JBE     043B
+00000422  89665E                  MOV     [BP+5E],SP
+00000425  1E                      PUSH    DS
+00000426  B88003                  MOV     AX,0380
+00000429  50                      PUSH    AX
+0000042A  B90100                  MOV     CX,0001
+0000042D  9A00000000              CALL    CBL_FILE_ERROR
+00000432  8E5E68                  MOV     DS,[BP+68]
+00000435  8E4668                  MOV     ES,[BP+68]
+00000438  8B665E                  MOV     SP,[BP+5E]
+0000043B  B83F04                  MOV     AX,043F
+0000043E  C3                      RET
+0000043F  31D2                    XOR     DX,DX
+00000441  A1F804                  MOV     AX,[04F8]
+00000444  86C4                    XCHG    AL,AH
+* Microsoft COBOL Code Generator         EXERC1.OBJ                   Page 0008
+* Address        Code
+00000446  BB0200                  MOV     BX,0002
+00000449  9A00000000              CALL    _EXITPRG
+0000044E  9A00000000              CALL    _STOPRUN
+    I01F4:
+00000453  803E370280              CMP     BYTE PTR [0237],80
+00000458  730A                    JAE     0464
+0000045A  B080                    MOV     AL,80
+0000045C  BE3002                  MOV     SI,0230
+0000045F  9A00000000              CALL    _FILE
+    I0200:
+00000464  8E4668                  MOV     ES,[BP+68]
+00000467  803EDF0280              CMP     BYTE PTR [02DF],80
+0000046C  730A                    JAE     0478
+0000046E  B080                    MOV     AL,80
+00000470  BED802                  MOV     SI,02D8
+00000473  9A00000000              CALL    _FILE
+    I020C:
+00000478  8E4668                  MOV     ES,[BP+68]
+0000047B  803E870380              CMP     BYTE PTR [0387],80
+00000480  730A                    JAE     048C
+00000482  B080                    MOV     AL,80
+00000484  BE8003                  MOV     SI,0380
+00000487  9A00000000              CALL    _FILE
+    I0218:
+0000048C  8E4668                  MOV     ES,[BP+68]
+    I0219:
+0000048F  B89304                  MOV     AX,0493
+00000492  C3                      RET
+00000493  B89704                  MOV     AX,0497
+00000496  C3                      RET
+    Entry CANCEL:
+00000497  8E5E68                  MOV     DS,[BP+68]
+0000049A  8E4668                  MOV     ES,[BP+68]
+0000049D  E8B3FF                  CALL    I01F4
+000004A0  31D2                    XOR     DX,DX
+000004A2  A1F804                  MOV     AX,[04F8]
+000004A5  86C4                    XCHG    AL,AH
+000004A7  BB0200                  MOV     BX,0002
+000004AA  9A00000000              CALL    _EXITPRG
+*
+* Data = 000001320 Code = 000001199 Dictionary = 000004655
+*
+*
+* Microsoft COBOL Code Generator                 Version 4.5
+* (C)Copyright Microsoft Corp 1984, 1991               URN  AXUPA/MS0/000000
+* Native Code Generator                        REF GB03.03.16   I86
+

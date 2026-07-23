@@ -1,0 +1,87 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 18:04 Page   1
+*                                      EXERC6.CBL
+* Options: LIST(EXERC6.LST) ASMLIST(EXERC6.GRP)
+     1 IDENTIFICATION DIVISION.
+     2
+     3 PROGRAM-ID.    Exerc7.
+     4 AUTHOR.        YHAGO PESSOA.
+     5 INSTALLATION.  FATEC-SP.
+     6 DATE-WRITTEN.  18/03/2025.
+     7 DATE-COMPILED. 18-Mar-25 18:04.
+     8 SECURITY.     APENAS O AUTOR PODE MODIFICA-LO.
+     9
+    10 ENVIRONMENT DIVISION.
+    11
+    12   CONFIGURATION SECTION.
+    13     SOURCE-COMPUTER.  MY-PC.
+    14     OBJECT-COMPUTER.  MY-PC.
+    15     SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    16   INPUT-OUTPUT SECTION.
+    17     FILE-CONTROL.
+    18       SELECT   CAD-ENT   ASSIGN TO DISK
+    19       ORGANIZATION IS  LINE  SEQUENTIAL.
+    20       SELECT   CAD-SAI   ASSIGN TO DISK
+    21       ORGANIZATION IS  LINE  SEQUENTIAL.
+    22
+    23 DATA DIVISION.
+    24
+    25   FILE SECTION.
+    26     FD CAD-ENT
+    27       LABEL   RECORD    STANDARD
+    28       VALUE  OF FILE-ID IS "CAD-ENT.DAT".
+    29     01 REG-ENT.
+    30       02 MATRI-ENT     PIC 9(05).
+    31       02 NOME-ENT      PIC X(30).
+    32       02 SALARIO-ENT   PIC 9(05)V99.
+    33     FD CAD-SAI
+    34       LABEL   RECORD   STANDARD
+    35       VALUE OF FILE-ID IS "CAD-SAI.DAT".
+    36     01 REG-SAI.
+    37       02 MATRI-SAI     PIC 9(05).
+    38       02 NOME-SAI      PIC X(30).
+    39       02 SALARIO-SAI   PIC 9(05)V99.
+    40   WORKING-STORAGE SECTION.
+    41     77 FIM-ARQ  PIC X(03)  VALUE "NAO".
+    42
+    43 PROCEDURE DIVISION.
+    44
+    45   TESTE.
+    46     PERFORM INICIO.
+    47     PERFORM PRINCIPAL
+    48       UNTIL FIM-ARQ EQUAL "SIM".
+    49     PERFORM TERMINO
+    50     STOP RUN.
+    51
+    52   INICIO.
+    53     OPEN INPUT  CAD-ENT
+    54          OUTPUT CAD-SAI.
+    55     PERFORM LEITURA.
+    56
+    57   LEITURA.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 18:04 Page   2
+*                                      EXERC6.CBL
+    58     READ CAD-ENT
+    59       AT END
+    60       MOVE "SIM" TO FIM-ARQ.
+    61
+    62   PRINCIPAL.
+    63     PERFORM GRAVACAO.
+    64     PERFORM LEITURA.
+    65
+    66   GRAVACAO.
+    67       MOVE MATRI-ENT   TO MATRI-SAI.
+    68       MOVE NOME-ENT    TO NOME-SAI.
+    69       MOVE SALARIO-ENT TO SALARIO-SAI.
+    70       IF SALARIO-SAI > 3000
+    71         WRITE REG-SAI
+    72       END-IF.
+    73
+    74   TERMINO.
+    75     CLOSE CAD-ENT
+    76           CAD-SAI.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1048     Code:         334     Dictionary:        1083

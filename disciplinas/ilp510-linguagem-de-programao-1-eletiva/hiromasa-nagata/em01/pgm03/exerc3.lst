@@ -1,0 +1,86 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 17:37 Page   1
+*                                      EXERC3.CBL
+* Options: LIST(EXERC3.LST) ASMLIST(EXERC3.GRP)
+     1 IDENTIFICATION  DIVISION.
+     2 PROGRAM-ID.     EXERC3.
+     3 AUTHOR.         YHAGO PESSOA.
+     4 INSTALLATION.   FATEC-SP.
+     5 DATE-WRITTEN.   18/03/2025.
+     6 DATE-COMPILED. 18-Mar-25 17:37.
+     7 SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+     8
+     9 ENVIRONMENT     DIVISION.
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER.  MY-PC.
+    12 OBJECT-COMPUTER.  MY-PC.
+    13 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16 FILE-CONTROL.
+    17     SELECT   CADALU      ASSIGN      TO       DISK
+    18     ORGANIZATION  IS         LINE        SEQUENTIAL.
+    19     SELECT   CADATU        ASSIGN     TO       DISK
+    20     ORGANIZATION  IS         LINE        SEQUENTIAL.
+    21
+    22 DATA           DIVISION.
+    23 FILE SECTION.
+    24
+    25 FD  CADALU
+    26     LABEL   RECORD  STANDARD
+    27     VALUE    OF FILE-ID    IS          "CADALU.DAT".
+    28 01  REG-ENT.
+    29     02 NUM-ENT           PIC 9(05).
+    30     02 NOME-ENT          PIC X(20).
+    31     02 NOTA1-ENT         PIC 9(02)V99.
+    32     02 NOTA2-ENT         PIC 9(02)V99.
+    33     02 NOTA3-ENT         PIC 9(02)V99.
+    34
+    35 FD  CADATU
+    36     LABEL   RECORD  STANDARD
+    37     VALUE   OF FILE-ID    IS   "CADATU.DAT".
+    38 01  REG-SAI.
+    39     02 NUM-SAI           PIC 9(05).
+    40     02 MEDIA-SAI         PIC 9(02)V99.
+    41
+    42 WORKING-STORAGE SECTION.
+    43     77 FIM-ARQ          PIC X(03)    VALUE "NAO".
+    44     77 MEDIA-CONT       PIC 9(02)V99.
+    45
+    46 PROCEDURE        DIVISION.
+    47
+    48 EXEMPLO.
+    49     PERFORM INICIO.
+    50     PERFORM PRINCIPAL
+    51       UNTIL FIM-ARQ EQUAL "SIM".
+    52     PERFORM TERMINO
+    53     STOP RUN.
+    54 INICIO.
+    55     OPEN INPUT CADALU
+    56          OUTPUT CADATU.
+    57     PERFORM LEITURA.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 17:37 Page   2
+*                                      EXERC3.CBL
+    58
+    59     LEITURA.
+    60         READ CADALU
+    61            AT END
+    62            MOVE "SIM" TO FIM-ARQ.
+    63 PRINCIPAL.
+    64     PERFORM GRAVACAO.
+    65     PERFORM LEITURA.
+    66
+    67     GRAVACAO.
+    68         COMPUTE MEDIA-CONT=(NOTA1-ENT + NOTA2-ENT + NOTA3-ENT)/3.
+    69         MOVE NUM-ENT TO NUM-SAI.
+    70         MOVE MEDIA-CONT TO MEDIA-SAI.
+    71         WRITE REG-SAI.
+    72
+    73 TERMINO.
+    74     CLOSE CADALU
+    75           CADATU.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1024     Code:         339     Dictionary:        1170

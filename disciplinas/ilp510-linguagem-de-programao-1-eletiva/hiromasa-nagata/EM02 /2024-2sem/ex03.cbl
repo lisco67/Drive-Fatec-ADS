@@ -1,0 +1,154 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EX03.
+       AUTHOR. .
+       INSTALLATION. FATEC-SP.
+       DATE-WRITTEN. .
+       DATE-COMPILED.
+       SECURITY. APENAS O AUTOR PODE MODIFICAR.
+      *REMARKS.  LER OS DADOS DO ARQUIVO DE ENTRADA CADENT E GRAVAR
+      *          NO ARQUIVO DE SAIDA RELSAI OS REGISTROS QUE TIVEREM
+      *          SALARIO MAIORES OU IGUAIS A 5000 E FOREM DO SEXO
+      *          FEMININO.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+           SOURCE-COMPUTER. IBM-PC.
+           OBJECT-COMPUTER. IBM-PC.
+           SPECIAL-NAMES.   DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADENT ASSIGN TO DISK ORGANIZATION IS
+               LINE SEQUENTIAL.
+           SELECT RELSAI ASSIGN TO DISK.
+
+       DATA DIVISION.
+       FILE SECTION.
+       FD CADENT LABEL RECORD ARE STANDARD VALUE OF FILE-ID IS
+           "CADENT.DAT".
+
+           01 REG-ENT.
+             02 COD-ENT      PIC 9(07).
+             02 NOME-ENT     PIC X(30).
+             02 SAL-ENT      PIC 9(5)V99.
+             02 SEX0-ENT     PIC X(01).
+
+       FD RELSAI LABEL RECORD IS OMITTED.
+           01 REL-SAI PIC X(80).
+
+       WORKING-STORAGE SECTION.
+           77 FIM-ARQ PIC X(03) VALUE "NAO".
+           77 CT-LIN PIC 9(02) VALUE 21.
+           77 CT-PAG PIC 9(03) VALUE ZEROS.
+           77 CT-CLIE PIC 9(02) VALUE ZEROS.
+           77 WSAL-CLIE PIC 9(09)V99 VALUE ZEROS.
+
+           01 CAB-01.
+             02 FILLER PIC X(70) VALUE SPACES.
+             02 FILLER PIC X(05) VALUE "Pag. ".
+             02 CAB-PAG PIC 9(03).
+             02 FILLER PIC X(02) VALUE SPACES.
+
+           01 CAB-02.
+             02 FILLER PIC X(21) VALUE SPACES.
+             02 FILLER PIC X(38) VALUE 
+               "LISTAGEM DOS CLIENTES DO SEXO FEMININO".
+             02 FILLER PIC X(21) VALUE SPACES.
+
+           01 CAB-03.
+             02 FILLER PIC X(23) VALUE SPACES.
+             02 FILLER PIC X(34) VALUE 
+               "COM SALARIOS SUPERIORES A 5.000,00".
+             02 FILLER PIC X(23) VALUE SPACES.
+
+           01 CAB-04.          
+             02 FILLER PIC X(08) VALUE SPACES.
+             02 FILLER PIC X(06) VALUE "CODIGO".
+             02 FILLER PIC X(24) VALUE SPACES.
+             02 FILLER PIC X(04) VALUE "NOME".
+             02 FILLER PIC X(24) VALUE SPACES.
+             02 FILLER PIC X(07) VALUE "SALARIO".
+             02 FILLER PIC X(08) VALUE SPACES.
+
+           01 ROD-01.
+             02 FILLER PIC X(05) VALUE SPACES.
+             02 FILLER PIC X(29) VALUE 
+               "Total de Clientes impressos: ".
+             02 ROD-TOT-CLIE PIC ZZ.999.
+             02 FILLER PIC X(41) VALUE SPACES.
+
+           01 ROD-02.
+             02 FILLER PIC X(05) VALUE SPACES.
+             02 FILLER PIC X(18) VALUE "Total de Salario: ".
+             02 ROD-TOT-SAL PIC ZZZ.ZZZ.ZZ9,99.
+             02 FILLER PIC X(48).
+
+           01 DETALHE.
+             02 FILLER PIC X(08) VALUE SPACES. 
+             02 DET-COD PIC X(07).
+             02 FILLER PIC X(09) VALUE SPACES.
+             02 DET-NOME PIC X(30).
+             02 FILLER PIC X(10) VALUE SPACES.
+             02 DET-SAL PIC ZZ.999,99.
+             02 FILLER PIC X(07) VALUE SPACES.
+
+       PROCEDURE DIVISION.
+       PGM-EX02.
+           PERFORM INICIO.
+           PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM TERMINO.
+           STOP RUN.
+
+       INICIO.
+           OPEN INPUT CADENT OUTPUT RELSAI.
+           PERFORM LEITURA.
+
+       LEITURA.
+           READ CADENT AT END MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL.
+           PERFORM VALIDACAO.
+           PERFORM LEITURA.
+           IF FIM-ARQ EQUAL "SIM"
+               PERFORM RODAPE.
+
+       VALIDACAO.
+           IF SAL-ENT NOT LESS THAN 5000,00 AND 
+             (SEX0-ENT EQUAL "F" OR "f")
+               PERFORM IMPRESSAO.
+
+       IMPRESSAO.
+           IF CT-LIN GREATER THAN 20
+               PERFORM CABECALHO.
+           PERFORM IMPRIME-DET.
+
+       CABECALHO.
+           MOVE 1 TO CT-LIN.
+           ADD 1 TO CT-PAG.
+           MOVE CT-PAG TO CAB-PAG.
+           MOVE SPACES TO REL-SAI.
+           WRITE REL-SAI AFTER ADVANCING PAGE.
+           WRITE REL-SAI FROM CAB-01 AFTER ADVANCING 1 LINE.
+           WRITE REL-SAI FROM CAB-02 AFTER ADVANCING 1 LINE.
+           WRITE REL-SAI FROM CAB-03 AFTER ADVANCING 1 LINE.
+           WRITE REL-SAI FROM CAB-04 AFTER ADVANCING 3 LINES.
+           MOVE SPACES TO REL-SAI.
+           WRITE REL-SAI AFTER ADVANCING 1 LINE.
+
+       RODAPE.
+           MOVE CT-CLIE TO ROD-TOT-CLIE.
+           MOVE WSAL-CLIE TO ROD-TOT-SAL.
+           WRITE REL-SAI FROM ROD-01 AFTER ADVANCING 3 LINES. 
+           WRITE REL-SAI FROM ROD-02 AFTER ADVANCING 1 LINE.
+       
+       IMPRIME-DET.
+           MOVE COD-ENT TO DET-COD.
+           MOVE NOME-ENT TO DET-NOME.
+           MOVE SAL-ENT TO DET-SAL.
+           WRITE REL-SAI FROM DETALHE AFTER ADVANCING 1 LINE.
+           ADD 1 TO CT-LIN.
+           ADD 1 TO CT-CLIE.
+           ADD SAL-ENT TO WSAL-CLIE.
+
+       TERMINO.
+           CLOSE CADENT RELSAI.

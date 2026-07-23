@@ -1,0 +1,95 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Apr-25 10:45 Page   1
+*                                      EXERC5.CBL
+* Options: LIST(EXERC5.LST) ASMLIST(EXERC5.GRP)
+     1 IDENTIFICATION  DIVISION.
+     2 PROGRAM-ID.     EXERC5.
+     3 AUTHOR.         YHAGO PESSOA.
+     4 INSTALLATION.   FATEC-SP.
+     5 DATE-WRITTEN.   18/03/2025.
+     6 DATE-COMPILED. 15-Apr-25 10:45.
+     7 SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+     8*REMARKS.  LE O REGISTRO DO ARQUIVO DE ENTRADA
+     9*          CADALU(CODIGO,NOME,NOTA1,NOTA2 E FALTAS) E GRAVA
+    10*          NO ARQUVIO DE SAIDA CADAPR(CODIGO,NOME,MEDIA)SOMENTE
+    11*          AQUELES QUE APRESENTA NOTAS MAIORES QUE 6 E TIVEREM
+    12*          MENOS QUE 19 FALTAS.
+    13
+    14 ENVIRONMENT     DIVISION.
+    15 CONFIGURATION SECTION.
+    16 SOURCE-COMPUTER.  MY-PC.
+    17 OBJECT-COMPUTER.  MY-PC.
+    18 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    19
+    20 INPUT-OUTPUT SECTION.
+    21 FILE-CONTROL.
+    22     SELECT   CADALU      ASSIGN      TO       DISK
+    23     ORGANIZATION  IS         LINE        SEQUENTIAL.
+    24     SELECT   CADAPR        ASSIGN     TO       DISK
+    25     ORGANIZATION  IS         LINE        SEQUENTIAL.
+    26
+    27 DATA           DIVISION.
+    28 FILE SECTION.
+    29
+    30 FD  CADALU
+    31     LABEL   RECORD  STANDARD
+    32     VALUE    OF FILE-ID    IS          "CADALU.DAT".
+    33 01  REG-ENT.
+    34     02 NUM-ENT           PIC 9(05).
+    35     02 NOME-ENT          PIC X(20).
+    36     02 NOTA1-ENT         PIC 9(02)V99.
+    37     02 NOTA2-ENT         PIC 9(02)V99.
+    38     02 FALTAS            PIC 9(02).
+    39
+    40 FD  CADAPR
+    41     LABEL   RECORD  STANDARD
+    42     VALUE   OF FILE-ID    IS   "CADAPR.DAT".
+    43 01  REG-SAI.
+    44     02 NUM-SAI           PIC 9(05).
+    45     02 NOME-SAI          PIC X(20).
+    46     02 MEDIA-SAI         PIC 9(02)V99.
+    47
+    48 WORKING-STORAGE SECTION.
+    49     77 FIM-ARQ          PIC X(03)    VALUE "NAO".
+    50     77 MEDIA-CONT       PIC 9(02)V99.
+    51
+    52 PROCEDURE        DIVISION.
+    53
+    54 EXEMPLO.
+    55     PERFORM INICIO.
+    56     PERFORM PRINCIPAL
+    57       UNTIL FIM-ARQ EQUAL "SIM".
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Apr-25 10:45 Page   2
+*                                      EXERC5.CBL
+    58     PERFORM TERMINO
+    59     STOP RUN.
+    60 INICIO.
+    61     OPEN INPUT CADALU
+    62          OUTPUT CADAPR.
+    63     PERFORM LEITURA.
+    64
+    65     LEITURA.
+    66         READ CADALU
+    67            AT END
+    68            MOVE "SIM" TO FIM-ARQ.
+    69 PRINCIPAL.
+    70     PERFORM GRAVACAO.
+    71     PERFORM LEITURA.
+    72
+    73     GRAVACAO.
+    74         COMPUTE MEDIA-CONT=(NOTA1-ENT + NOTA2-ENT)/2.
+    75         IF MEDIA-CONT >= 7 AND FALTAS <= 18
+    76             MOVE NUM-ENT TO NUM-SAI
+    77             MOVE NOME-ENT TO NOME-SAI
+    78             MOVE MEDIA-CONT TO MEDIA-SAI
+    79             WRITE REG-SAI
+    80        END-IF.
+    81
+    82 TERMINO.
+    83     CLOSE CADALU
+    84           CADAPR.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1040     Code:         358     Dictionary:        1196

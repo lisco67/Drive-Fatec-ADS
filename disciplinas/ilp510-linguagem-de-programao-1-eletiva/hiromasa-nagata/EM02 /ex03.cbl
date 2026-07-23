@@ -1,0 +1,140 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EX03.
+       AUTHOR. Guilherme, Renato e Nirley.
+       INSTALLATION. FATEC-SP.
+       DATE-WRITTEN. 27/08/2023.
+       DATE-COMPILED.
+       SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-PC.
+       OBJECT-COMPUTER. IBM-PC.
+       SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADENT ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+      *Quando se trata de relatório
+      *SELECT RELSAI ASSIGN TO PRINTER.
+           SELECT RELSAI ASSIGN TO DISK.
+       DATA DIVISION.
+       FILE SECTION.
+       FD CADENT
+           LABEL RECORD ARE STANDARD
+           VALUE OF FILE-ID IS "CADENT.DAT".
+       01 REG-USU.
+           02 COD-USU PIC 9(07).
+           02 NOM-USU PIC X(30).
+           02 SAL-USU PIC 9(5)V9(2).
+           02 SEXO-USU PIC X(1).
+               
+       FD RELSAI
+           LABEL RECORD IS OMITTED.
+      *Folha possui 80 colunas
+       01 REG-ATR PIC X(80).
+       WORKING-STORAGE SECTION.
+      *dEFINIR CARIMBOS PARA IMPRIMIR RELATÓRIOS 
+       77 FIM-ARQ PIC X(03) VALUE "NAO".
+      *qtd de linhas por página
+       77 CT-LIN PIC 9(02) VALUE 20.
+       77 CT-PAG PIC 9(02) VALUE ZEROES.
+       77 TOTAL-USU PIC 9(04) VALUE 0.
+       77 TOTAL-SAL PIC 9(10) VALUE 0.
+
+      *Carimbo
+       01 CAB-01.
+      *70 posições em branco. Soma 70 + 5 + 3
+           02 FILLER PIC X(70) VALUE SPACES.
+           02 FILLER PIC X(05) VALUE "PAG. ".
+           02 VAR-PAG PIC 99.
+           02 FILLER PIC X(03) VALUE SPACES.
+       01 CAB-02.
+           02 FILLER PIC X(15) VALUE SPACES.
+           02 FILLER PIC X(29) VALUE "LISTAGEM DOS CLIENTES DO SEXO".
+           02 FILLER PIC X(09) VALUE " FEMININO".
+           02 FILLER PIC X(24) VALUE SPACES.
+       01 CAB-03.
+           02 FILLER PIC X(15) VALUE SPACES.
+           02 FILLER PIC X(29) VALUE "COM SALARIOS SUPERIORES A".
+           02 FILLER PIC X(09) VALUE " 5000,00".
+       01 CAB-04.
+           02 FILLER PIC X(5) VALUE SPACES.
+           02 FILLER PIC X(6) VALUE "CODIGO".
+           02 FILLER PIC X(19) VALUE SPACES.
+           02 FILLER PIC X(4) VALUE "NOME".
+           02 FILLER PIC X(28) VALUE SPACES.
+           02 FILLER PIC X(07) VALUE "SALARIO".
+           02 FILLER PIC X(5) VALUE SPACES.
+       01 DETALHE.
+           02 FILLER PIC X(06) VALUE SPACES.
+           02 COD PIC 9(07).
+           02 FILLER PIC X(06) VALUE SPACES.
+           02 NOM PIC X(30).
+           02 FILLER PIC X(13) VALUE SPACES.
+           02 SALARIO PIC Z99.999,99.
+           02 FILLER PIC X(11) VALUE SPACES.
+       01 CAB-TOTAL-USU.
+           02 FILLER PIC X(28) VALUE "Total de Clientes impressos:".
+           02 FILLER PIC X(06) VALUE SPACES.
+           02 TOTAL-USU-IMPRI PIC 9(04).
+       01 CAB-TOTAL-SAL.
+           02 FILLER PIC X(18) VALUE "Total de Salarios:".
+           02 FILLER PIC X(06) VALUE SPACES.
+           02 TOTAL-SAL-IMPRI PIC Z999.999.999,99.
+
+       PROCEDURE DIVISION.
+ 
+       EXEMPLO-IMPRESSAO.
+           PERFORM INICIO.
+           PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM FIM.
+           STOP RUN.
+
+       INICIO.
+           OPEN INPUT CADENT
+               OUTPUT RELSAI.
+           PERFORM LEITURA.
+
+       LEITURA.
+           READ CADENT AT END 
+               MOVE "SIM" TO FIM-ARQ
+               PERFORM IMPFINAL.
+                       
+       PRINCIPAL.
+           PERFORM IMPRESSAO.
+           PERFORM LEITURA.
+
+       IMPRESSAO.
+           IF CT-LIN GREATER THAN 19
+               PERFORM CABECALHO.
+               PERFORM IMPDET.
+
+       IMPDET.
+           IF SAL-USU NOT< 05000,00 AND SEXO-USU = "F" OR "f"
+                  MOVE COD-USU TO COD
+                  MOVE NOM-USU TO NOM
+                  MOVE SAL-USU TO SALARIO
+                  ADD SAL-USU TO TOTAL-SAL
+                  ADD 1 TO TOTAL-USU
+                  WRITE REG-ATR FROM DETALHE AFTER ADVANCING 1 LINE
+                  ADD 1 TO CT-LIN.
+       IMPFINAL.
+           MOVE TOTAL-USU TO TOTAL-USU-IMPRI.
+           MOVE TOTAL-SAL TO TOTAL-SAL-IMPRI.
+           WRITE REG-ATR FROM CAB-TOTAL-USU AFTER ADVANCING 4 LINE.
+           WRITE REG-ATR FROM CAB-TOTAL-SAL AFTER ADVANCING 1 LINE.
+
+       CABECALHO.
+           ADD 1 TO CT-PAG.
+           MOVE CT-PAG TO VAR-PAG.
+           MOVE SPACES TO REG-ATR.
+           WRITE REG-ATR AFTER ADVANCING PAGE.
+           WRITE REG-ATR FROM CAB-01 AFTER ADVANCING 1 LINE.
+           WRITE REG-ATR FROM CAB-02 AFTER ADVANCING 2 LINES.
+           WRITE REG-ATR FROM CAB-03 AFTER ADVANCING 1 LINES.
+           WRITE REG-ATR FROM CAB-04 AFTER ADVANCING 2 LINES.
+
+           MOVE ZEROES TO CT-LIN.
+       FIM.
+           CLOSE CADENT
+               RELSAI.

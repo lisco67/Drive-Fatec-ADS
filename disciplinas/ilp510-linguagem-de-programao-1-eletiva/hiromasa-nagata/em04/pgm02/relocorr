@@ -1,0 +1,48 @@
+
+                    Relação de atualização               PAG.   1
+
+codigo     tipo          mensagem
+   1          I          REGISTRO INCLUIDO
+   2          C          REGISTRO SUBSTITUIDO
+   2          A          REGISTRO SUBSTITUTO
+   3          A          ALTERAÇÃO P/REG. INEXISTENTE
+   5          I          REGISTRO INCLUIDO
+   6          A          ALTERAÇÃO P/REG. INEXISTENTE
+  10          E          EXCLUSÃO P/REG. INEXISTENTE
+  14          E          EXCLUSÃO P/REG. INEXISTENTE
+  15          I          REGISTRO INCLUIDO
+  17          I          REGISTRO INCLUIDO
+  18          E          EXCLUSÃO P/REG. INEXISTENTE
+  19          I          REGISTRO INCLUIDO
+  20          I          REGISTRO INCLUIDO
+  22          E          EXCLUSÃO P/REG. INEXISTENTE
+  23          E          REGISTRO EXCLUIDO
+  24          E          EXCLUSÃO P/REG. INEXISTENTE
+  25          I          REGISTRO INCLUIDO
+  31          I          REGISTRO INCLUIDO
+  34          I          REGISTRO INCLUIDO
+  35          E          EXCLUSÃO P/REG. INEXISTENTE
+  38          I          REGISTRO INCLUIDO
+  42          A          ALTERAÇÃO P/REG. INEXISTENTE
+  43          A          ALTERAÇÃO P/REG. INEXISTENTE
+  45          A          ALTERAÇÃO P/REG. INEXISTENTE
+  46          E          EXCLUSÃO P/REG. INEXISTENTE
+  48          I          REGISTRO INCLUIDO
+  49          I          REGISTRO INCLUIDO
+  50          E          REGISTRO EXCLUIDO
+  51          A          ALTERAÇÃO P/REG. INEXISTENTE
+  52          A          ALTERAÇÃO P/REG. INEXISTENTE
+  53          A          ALTERAÇÃO P/REG. INEXISTENTE
+  54          I          REGISTRO INCLUIDO
+  55          I          REGISTRO INCLUIDO
+  56          I          REGISTRO INCLUIDO
+  57          I          REGISTRO INCLUIDO
+  58          A          ALTERAÇÃO P/REG. INEXISTENTE
+                    Relação de atualização               PAG.   2
+
+codigo     tipo          mensagem
+  59          E          EXCLUSÃO P/REG. INEXISTENTE
+  60          I          REGISTRO INCLUIDO
+  61          I          REGISTRO INCLUIDO
+  62          C          REGISTRO SUBSTITUIDO
+  62          A          REGISTRO SUBSTITUTO

@@ -1,0 +1,80 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 17:51 Page   1
+*                                      EXERC4.CBL
+* Options: LIST(EXERC4.LST) ASMLIST(EXERC4.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.     EX04.
+     3 AUTHOR.         EVILLYN.
+     4 INSTALLATION.   FATEC-SP.
+     5 DATE-WRITTEN.   18/03/2025.
+     6 DATE-COMPILED. 18-Mar-25 17:51.
+     7 SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+     8
+     9 ENVIRONMENT DIVISION.
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER.  FATECSP-PC.
+    12 OBJECT-COMPUTER.  FATECSP-PC.
+    13 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16 FILE-CONTROL.
+    17     SELECT CADCLI1 ASSIGN TO 'CADCLI1.DAT'
+    18         ORGANIZATION IS LINE SEQUENTIAL.
+    19     SELECT CADCLI2 ASSIGN TO 'CADCLI2.DAT'
+    20         ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22 DATA DIVISION.
+    23 FILE SECTION.
+    24
+    25 FD  CADCLI1.
+    26 01  REG-ENT.
+    27     02 COD-ENT     PIC 9(05).
+    28     02 NOME-ENT    PIC X(20).
+    29     02 SEXO        PIC X(01).
+    30
+    31 FD  CADCLI2.
+    32 01  REGISTRO-CADCLI2.
+    33     02 COD-SAI     PIC 9(05).
+    34     02 NOME-SAI    PIC X(20).
+    35
+    36 WORKING-STORAGE SECTION.
+    37 77  FIM-ARQUIVO    PIC X(03) VALUE 'NAO'.
+    38 77  CONTINUAR      PIC X VALUE 'Y'.
+    39
+    40 PROCEDURE DIVISION.
+    41
+    42 EXEMPLO.
+    43     PERFORM ABRIR-ARQUIVOS.
+    44     PERFORM LEITURA-REGISTROS.
+    45     PERFORM FECHAR-ARQUIVOS.
+    46     STOP RUN.
+    47
+    48 ABRIR-ARQUIVOS.
+    49     OPEN INPUT CADCLI1
+    50          OUTPUT CADCLI2.
+    51
+    52 LEITURA-REGISTROS.
+    53     READ CADCLI1 INTO REG-ENT
+    54         AT END
+    55             MOVE 'S' TO FIM-ARQUIVO
+    56         NOT AT END
+    57             IF SEXO OF REG-ENT = 'M'
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Mar-25 17:51 Page   2
+*                                      EXERC4.CBL
+    58                 MOVE COD-ENT TO COD-SAI
+    59                 MOVE NOME-ENT TO NOME-SAI
+    60                 WRITE REGISTRO-CADCLI2
+    61             END-IF
+    62             IF FIM-ARQUIVO = 'NAO' THEN
+    63                 GO TO LEITURA-REGISTROS
+    64             END-IF
+    65     END-READ.
+    66
+    67 FECHAR-ARQUIVOS.
+    68     CLOSE CADCLI1
+    69           CADCLI2.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         912     Code:         320     Dictionary:        1077

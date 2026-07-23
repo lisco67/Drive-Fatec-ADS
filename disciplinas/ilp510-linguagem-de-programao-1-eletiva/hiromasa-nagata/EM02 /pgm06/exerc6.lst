@@ -1,0 +1,281 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 29-Apr-25 17:46 Page   1
+*                                      EXERC6.CBL
+* Options: LIST(EXERC6.LST) ASMLIST(EXERC6.GRP)
+     1 IDENTIFICATION  DIVISION.
+     2 PROGRAM-ID.     EXERC6.
+     3 AUTHOR.         YHAGO PESSOA.
+     4 INSTALLATION.   FATEC-SP.
+     5 DATE-WRITTEN.   29/04/2025.
+     6 DATE-COMPILED. 29-Apr-25 17:46.
+     7 SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+     8
+     9 ENVIRONMENT     DIVISION.
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER.  MY-PC.
+    12 OBJECT-COMPUTER.  MY-PC.
+    13 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16 FILE-CONTROL.
+    17     SELECT      CADCLI     ASSIGN      TO       DISK
+    18     ORGANIZATION  IS    LINE        SEQUENTIAL.
+    19     SELECT   CADOK ASSIGN     TO       DISK
+    20     ORGANIZATION  IS   LINE        SEQUENTIAL.
+    21     SELECT RELOCOR     ASSIGN      TO       DISK.
+    22
+    23 DATA           DIVISION.
+    24 FILE SECTION.
+    25
+    26 FD  CADCLI
+    27     LABEL   RECORD  STANDARD
+    28     VALUE    OF FILE-ID    IS         "CAD-ENT.DAT".
+    29 01   REGCLI.
+    30     02 CODIGO-ENT         PIC 9(03).
+    31     02 CPF-ENT            PIC 9(11).
+    32     02 NOME-ENT           PIC X(30).
+    33     02 ESTADO-ENT         PIC X(02).
+    34       88 ESTADO-VALIDO      VALUE
+    35        'AC' 'AL' 'AP' 'AM' 'BA' 'CE' 'DF' 'ES' 'GO'
+    36        'MA' 'MT' 'MS' 'MG' 'PA' 'PB' 'PR' 'PE' 'PI'
+    37        'RJ' 'RN' 'RS' 'RO' 'RR' 'SC' 'SP' 'SE' 'TO'.
+    38     02 CIDADE-ENT         PIC X(30).
+    39     02 EMAIL-ENT          PIC X(30).
+    40     02 TELEFONE-ENT       PIC 9(10).
+    41
+    42 FD  CADOK
+    43     LABEL   RECORD  STANDARD
+    44     VALUE   OF FILE-ID    IS   "CAD-SAI.DAT".
+    45 01  REGOK.
+    46     02 CPF-SAI            PIC 9(11).
+    47     02 NOME-SAI           PIC X(30).
+    48     02 ESTADO-SAI         PIC X(02).
+    49     02 CIDADE-SAI         PIC X(30).
+    50     02 EMAIL-SAI          PIC X(30).
+    51     02 TELEFONE-SAI       PIC 9(10).
+    52
+    53
+    54 FD  RELOCOR
+    55     LABEL RECORD IS OMITTED.
+    56 01 REG-ATR      PIC X(80).
+    57
+* Microsoft COBOL Version 4.5        L2.4 revision 002 29-Apr-25 17:46 Page   2
+*                                      EXERC6.CBL
+    58 WORKING-STORAGE SECTION.
+    59     77 FIM-ARQ           PIC X(03)    VALUE "NAO".
+    60     77 CT-LIN            PIC 9(02) VALUE 40.
+    61     77 CPF-VALIDO        PIC X(01) VALUE "S".
+    62     77 NOME-VALIDO       PIC X(01) VALUE "S".
+    63     77 CIDADE-VALIDO     PIC X(01) VALUE "S".
+    64     77 EMAIL-VALIDO      PIC X(01) VALUE "S".
+    65     77 CPF-01            PIC 9(01) VALUE ZEROS.
+    66     77 CPF-02            PIC 9(01) VALUE ZEROS.
+    67     77 CPF-03            PIC 9(01) VALUE ZEROS.
+    68     77 CPF-04            PIC 9(01) VALUE ZEROS.
+    69     77 CPF-05            PIC 9(01) VALUE ZEROS.
+    70     77 CPF-06            PIC 9(01) VALUE ZEROS.
+    71     77 CPF-07            PIC 9(01) VALUE ZEROS.
+    72     77 CPF-08            PIC 9(01) VALUE ZEROS.
+    73     77 CPF-09            PIC 9(01) VALUE ZEROS.
+    74     77 CPF-10            PIC 9(01) VALUE ZEROS.
+    75     77 CPF-11            PIC 9(01) VALUE ZEROS.
+    76     77 SOMA              PIC 9(04) VALUE ZEROS.
+    77     77 RESTO1            PIC 9(02) VALUE ZEROS.
+    78     77 RESTO2            PIC 9(02) VALUE ZEROS.
+    79     77 I                 PIC 9(01) VALUE ZEROS.
+    80     77 TOTAL-ERROS       PIC 9(01) VALUE ZEROS.
+    81     77 DIGITO1           PIC 9(02) VALUE ZEROS.
+    82     77 DIGITO2           PIC 9(02) VALUE ZEROS.
+    83
+    84
+    85 01 ERROR-LISTA.
+    86     02 ERROR-ITEM  PIC X(50)  OCCURS 5 TIMES.
+    87
+    88 01 CAB-01.
+    89     02 FILLER     PIC X(30) VALUE SPACES.
+    90     02 FILLER     PIC X(17) VALUE "TURISMAR TURISMOS".
+    91
+    92
+    93 01 CAB-02.
+    94     02 FILLER     PIC X(20) VALUE SPACES.
+    95     02 FILLER     PIC X(45)
+    96           VALUE "RELATÓRIO DE DADOS DE CLIENTES INCONSISTENTES".
+    97 01 CAB-03.
+    98     02 FILLER     PIC X(17) VALUE "CÓDIGO DO CLIENTE".
+    99     02 FILLER     PIC X(10) VALUE SPACES.
+   100     02 FILLER     PIC X(15) VALUE "DADOS INVÁLIDOS".
+   101 01 CAB-LINE.
+   102     02 FILLER     PIC X(80) VALUE ALL"-".
+   103
+   104 01 DETALHE-01.
+   105     02 CODIGO-REG     PIC  ZZ9.
+   106     02 FILLER         PIC X(15) VALUE SPACES.
+   107     02 ERROR-REG1     PIC  X(20).
+   108 01 DETALHE-02.
+   109     02 FILLER         PIC X(18) VALUE SPACES.
+   110     02 ERROR-REG2     PIC  X(20).
+   111
+   112 PROCEDURE        DIVISION.
+   113
+   114 PGM.
+   115     PERFORM INICIO.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 29-Apr-25 17:46 Page   3
+*                                      EXERC6.CBL
+   116     PERFORM PRINCIPAL
+   117       UNTIL FIM-ARQ EQUAL "SIM".
+   118     PERFORM TERMINO
+   119     STOP RUN.
+   120 INICIO.
+   121     MOVE "CPF INVÁLIDO"           TO ERROR-ITEM(1).
+   122     MOVE "NOME NÃO INFORMADO”"    TO ERROR-ITEM(2).
+   123     MOVE "ESTADO INVÁLIDO"        TO ERROR-ITEM(3).
+   124     MOVE "CIDADE NÃO INFORMADA"   TO ERROR-ITEM(4).
+   125     MOVE " EMAIL SEM DESCRIÇÃO"   TO ERROR-ITEM(5).
+   126     OPEN INPUT CADCLI
+   127          OUTPUT CADOK RELOCOR.
+   128     PERFORM LEITURA.
+   129
+   130     LEITURA.
+   131         READ CADCLI
+   132            AT END
+   133            MOVE "SIM" TO FIM-ARQ.
+   134 PRINCIPAL.
+   135     PERFORM VALIDARCPF.
+   136     PERFORM VALIDARNOME.
+   137     PERFORM VALIDACIDADE.
+   138     PERFORM VALIDAREMAIL.
+   139     IF (ESTADO-VALIDO AND CPF-VALIDO = "S" AND NOME-VALIDO = "S"
+   140         AND  CIDADE-VALIDO = "S" AND EMAIL-VALIDO ="S")
+   141             PERFORM VALIDO
+   142     ELSE
+   143         PERFORM INVALIDO
+   144     END-IF.
+   145     PERFORM LEITURA.
+   146
+   147 VALIDARCPF.
+   148     MOVE CPF-ENT(1:1) TO CPF-01
+   149     MOVE CPF-ENT(2:1) TO CPF-02
+   150     MOVE CPF-ENT(3:1) TO CPF-03
+   151     MOVE CPF-ENT(4:1) TO CPF-04
+   152     MOVE CPF-ENT(5:1) TO CPF-05
+   153     MOVE CPF-ENT(6:1) TO CPF-06
+   154     MOVE CPF-ENT(7:1) TO CPF-07
+   155     MOVE CPF-ENT(8:1) TO CPF-08
+   156     MOVE CPF-ENT(9:1) TO CPF-09
+   157     MOVE CPF-ENT(10:1) TO CPF-10
+   158     MOVE CPF-ENT(11:1) TO CPF-11
+   159     COMPUTE SOMA = CPF-01 * 10 + CPF-02 * 9 + CPF-03 * 8 +
+   160     CPF-04 * 7 + CPF-05 * 6 + CPF-06 * 5 + CPF-07 * 4 + CPF-08
+   161     * 3 + CPF-09 * 2.
+   162      IF RESTO2 < 2
+   163         MOVE 0 TO DIGITO2
+   164     ELSE
+   165         COMPUTE DIGITO2 = 11 - RESTO2
+   166     END-IF
+   167
+   168     IF CPF-10 = DIGITO1 AND CPF-11 = DIGITO2
+   169         MOVE "S" TO CPF-VALIDO
+   170     ELSE
+   171         MOVE "N" TO CPF-VALIDO
+   172         ADD 1 TO TOTAL-ERROS
+   173     END-IF.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 29-Apr-25 17:46 Page   4
+*                                      EXERC6.CBL
+   174 VALIDARNOME.
+   175     IF NOME-ENT EQUAL ZEROS
+   176         MOVE "N" TO NOME-VALIDO
+   177         ADD 1 TO TOTAL-ERROS
+   178     END-IF.
+   179 VALIDACIDADE.
+   180     IF CIDADE-ENT  EQUAL ZEROS
+   181         MOVE "N" TO CIDADE-VALIDO
+   182         ADD 1 TO TOTAL-ERROS
+   183     END-IF.
+   184
+   185 VALIDAREMAIL.
+   186     IF EMAIL-ENT EQUAL ZEROS
+   187         MOVE "N" TO EMAIL-VALIDO
+   188         ADD 1 TO TOTAL-ERROS
+   189     END-IF.
+   190
+   191 VALIDO.
+   192     MOVE CPF-ENT TO CPF-SAI.
+   193     MOVE NOME-ENT TO NOME-SAI.
+   194     MOVE ESTADO-ENT TO ESTADO-SAI.
+   195     MOVE CIDADE-ENT TO CIDADE-SAI.
+   196     MOVE EMAIL-ENT TO EMAIL-SAI.
+   197     MOVE TELEFONE-ENT TO TELEFONE-SAI.
+   198     WRITE REGOK.
+   199 INVALIDO.
+   200     IF CT-LIN GREATER THAN 39
+   201         PERFORM CABECALHO
+   202     END-IF.
+   203     PERFORM IMPRESSAO UNTIL TOTAL-ERROS EQUAL 0.
+   204
+   205 CABECALHO.
+   206     MOVE SPACES   TO REG-ATR.
+   207     WRITE REG-ATR AFTER ADVANCING PAGE.
+   208     WRITE REG-ATR FROM CAB-01.
+   209     WRITE REG-ATR FROM CAB-02 AFTER ADVANCING 2 LINES.
+   210     WRITE REG-ATR FROM CAB-03 AFTER ADVANCING 2 LINES.
+   211     WRITE REG-ATR FROM CAB-LINE AFTER ADVANCING 1 LINES.
+   212     MOVE ZEROS   TO CT-LIN.
+   213
+   214
+   215 IMPRESSAO.
+   216     ADD 1 TO I
+   217     IF I = 1
+   218         PERFORM DETALHE01
+   219     END-IF.
+   220     PERFORM DETALHE02.
+   221
+   222     COMPUTE TOTAL-ERROS = TOTAL-ERROS - 1.
+   223     ADD 1         TO CT-LIN.
+   224
+   225 DETALHE01.
+   226     MOVE CODIGO-ENT TO CODIGO-REG.
+   227     IF CPF-VALIDO EQUAL "N"
+   228         MOVE ERROR-ITEM(1) TO ERROR-REG1
+   229         MOVE "S" TO CPF-VALIDO
+   230     ELSE IF NOME-VALIDO EQUAL "N"
+   231         MOVE ERROR-ITEM(2) TO ERROR-REG1
+* Microsoft COBOL Version 4.5        L2.4 revision 002 29-Apr-25 17:46 Page   5
+*                                      EXERC6.CBL
+   232         MOVE "S" TO NOME-VALIDO
+   233     ELSE IF NOT(ESTADO-VALIDO)
+   234         MOVE ERROR-ITEM(3) TO ERROR-REG1
+   235         MOVE "SP" TO ESTADO-ENT
+   236     ELSE IF  CIDADE-VALIDO EQUAL "N"
+   237         MOVE ERROR-ITEM(4) TO ERROR-REG1
+   238         MOVE "S" TO CIDADE-VALIDO
+   239     ELSE IF  EMAIL-VALIDO EQUAL "N"
+   240         MOVE ERROR-ITEM(5) TO ERROR-REG1
+   241         MOVE "S" TO EMAIL-VALIDO
+   242     END-IF.
+   243      WRITE REG-ATR FROM DETALHE-01 AFTER ADVANCING 2 LINE.
+   244
+   245 DETALHE02.
+   246     IF CPF-VALIDO EQUAL "N"
+   247         MOVE ERROR-ITEM(1) TO ERROR-REG2
+   248         MOVE "S" TO CPF-VALIDO
+   249     ELSE IF NOME-VALIDO EQUAL "N"
+   250         MOVE ERROR-ITEM(2) TO ERROR-REG2
+   251         MOVE "S" TO NOME-VALIDO
+   252     ELSE IF NOT(ESTADO-VALIDO)
+   253         MOVE ERROR-ITEM(3) TO ERROR-REG2
+   254         MOVE "SP" TO ESTADO-ENT
+   255     ELSE IF  CIDADE-VALIDO EQUAL "N"
+   256         MOVE ERROR-ITEM(4) TO ERROR-REG2
+   257         MOVE "S" TO CIDADE-VALIDO
+   258     ELSE IF  EMAIL-VALIDO EQUAL "N"
+   259         MOVE ERROR-ITEM(5) TO ERROR-REG2
+   260         MOVE "S" TO EMAIL-VALIDO
+   261     END-IF.
+   262      WRITE REG-ATR FROM DETALHE-02 AFTER ADVANCING 1 LINE.
+   263 TERMINO.
+   264     CLOSE CADCLI CADOK RELOCOR.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        2220     Code:        1694     Dictionary:        3679

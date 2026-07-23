@@ -1,0 +1,236 @@
+
+                                             RELATÓRIO DE PAGAMENTO               PAG.   1
+
+DEPARTAMENTO = 1
+SEÇÃO        = 1
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     1     LEONARDO MACHADO         8.493.274,88         1.238.082,95         9.731.357,83     50.637,91         9.680.719,92
+    21     LEONARDO MACHADO         1.948.319,14         1.318.815,31         3.267.134,45     53.889,31         3.213.245,14
+    41     MARCELO FERREIRA         7.253.690,68         1.279.326,72         8.533.017,40     79.536,31         8.453.481,09
+    61     JOAO SILVA               1.890.071,04           511.116,19         2.401.187,23     52.688,46         2.348.498,77
+    81     ADRIANA MOURA            1.745.597,13           864.735,48         2.610.332,61     13.342,20         2.596.990,41
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    26.292.935,33
+
+SEÇÃO        = 2
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     6     PEDRO ALMEIDA            2.792.179,54         1.345.243,07         4.137.422,61     38.384,44         4.099.038,17
+    26     JULIANA FREITAS          5.727.153,91         1.131.985,58         6.859.139,49     49.831,57         6.809.307,92
+    46     VITOR SERRA              2.918.034,95         1.303.748,18         4.221.783,13     88.440,32         4.133.342,81
+    66     MARIA OLIVEIRA           3.775.939,93         1.470.611,40         5.246.551,33     79.004,21         5.167.547,12
+    86     LAURA LOBO               8.385.971,77           686.799,24         9.072.771,01     28.926,63         9.043.844,38
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    29.253.080,40
+
+SEÇÃO        = 3
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    11     JOAO SILVA               1.983.037,32         1.160.416,02         3.143.453,34     72.327,89         3.071.125,45
+    31     JOAO SILVA               2.165.037,01           592.486,21         2.757.523,22     81.355,04         2.676.168,18
+    51     CARLOS SANTOS            1.324.645,80         1.086.539,68         2.411.185,48     17.844,71         2.393.340,77
+    71     PAULO LIMA               1.730.984,81         1.259.240,42         2.990.225,23      8.634,96         2.981.590,27
+    91     RENATA RIBEIRO             439.411,96           718.656,68         1.158.068,64     61.433,53         1.096.635,11
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    12.218.859,78
+
+SEÇÃO        = 4
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    16     DANIEL NASCIMENTO        8.273.320,96           581.117,90         8.854.438,86     23.835,29         8.830.603,57
+    36     ROSA COSTA               1.543.738,54           762.976,56         2.306.715,10      7.615,64         2.299.099,46
+    56     PAULO LIMA               4.843.591,80         1.104.094,89         5.947.686,69      5.341,17         5.942.345,52
+    76     RICARDO CARVALHO         9.813.425,19           132.389,42         9.945.814,61     24.969,26         9.920.845,35
+    96     RICARDO CARVALHO         9.508.869,59         1.203.448,12        10.712.317,71     44.822,93        10.667.494,78
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    37.660.388,68
+TOTAL DE SALÁRIOS DO DEPARTAMENTO:   105.425.264,19
+                                             RELATÓRIO DE PAGAMENTO               PAG.   2
+
+DEPARTAMENTO = 2
+SEÇÃO        = 1
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    17     MARIA OLIVEIRA           8.013.956,77         1.051.470,73         9.065.427,50     30.618,63         9.034.808,87
+    37     FERNANDA BATISTA         6.160.910,73           735.348,95         6.896.259,68     53.910,97         6.842.348,71
+    57     VITOR SERRA              9.698.943,24           974.075,33        10.673.018,57     21.462,33        10.651.556,24
+    77     DANIEL NASCIMENTO        6.135.817,04            91.528,14         6.227.345,18     52.006,72         6.175.338,46
+    97     PEDRO ALMEIDA            2.791.054,27           586.429,90         3.377.484,17     44.344,73         3.333.139,44
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    36.037.191,72
+
+SEÇÃO        = 2
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     2     VITOR SERRA              8.350.680,45         1.129.502,14         9.480.182,59     27.225,32         9.452.957,27
+    22     MARCELO FERREIRA         5.452.681,80         1.366.053,50         6.818.735,30     48.337,65         6.770.397,65
+    42     JULIANA FREITAS          2.530.270,16         1.087.162,85         3.617.433,01     85.021,37         3.532.411,64
+    62     ROSA COSTA               3.563.867,35         1.003.410,78         4.567.278,13     94.656,13         4.472.622,00
+    82     PEDRO ALMEIDA            5.906.452,42            37.974,83         5.944.427,25     29.708,68         5.914.718,57
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    30.143.107,13
+
+SEÇÃO        = 3
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     7     JULIANA FREITAS          6.056.526,92            39.236,52         6.095.763,44      5.558,08         6.090.205,36
+    27     JULIANA FREITAS          4.640.733,96         1.017.590,22         5.658.324,18      2.749,24         5.655.574,94
+    47     JOAO SILVA               9.346.341,91           566.121,92         9.912.463,83     97.530,41         9.814.933,42
+    67     BRUNO RODRIGUES          8.308.559,65            12.007,34         8.320.566,99     73.786,15         8.246.780,84
+    87     BRUNO RODRIGUES          3.625.930,54            91.495,61         3.717.426,15     66.090,78         3.651.335,37
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    33.458.829,93
+
+SEÇÃO        = 4
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    12     PAULO LIMA               5.313.111,34           287.604,53         5.600.715,87     52.516,04         5.548.199,83
+    32     GUSTAVO BARBOSA          3.314.812,63         1.163.503,49         4.478.316,12     39.283,43         4.439.032,69
+    52     PAULO LIMA                 192.762,56           971.347,73         1.164.110,29     91.961,29         1.072.149,00
+    72     PAULO LIMA               3.967.757,99           478.356,93         4.446.114,92     19.976,09         4.426.138,83
+    92     JOAO SILVA               7.542.608,57           788.462,62         8.331.071,19     61.212,85         8.269.858,34
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    23.755.378,69
+TOTAL DE SALÁRIOS DO DEPARTAMENTO:   123.394.507,47
+                                             RELATÓRIO DE PAGAMENTO               PAG.   3
+
+DEPARTAMENTO = 3
+SEÇÃO        = 1
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    13     RICARDO CARVALHO         2.507.657,17           796.914,84         3.304.572,01     44.964,63         3.259.607,38
+    33     RENATA RIBEIRO           1.018.901,91           462.536,04         1.481.437,95     99.559,90         1.381.878,05
+    53     ADRIANA MOURA            2.019.509,15           880.467,64         2.899.976,79     46.371,00         2.853.605,79
+    73     PAULO LIMA               3.882.602,58           870.895,78         4.753.498,36     38.432,82         4.715.065,54
+    93     JOAO SILVA               9.067.711,03         1.401.418,90        10.469.129,93     10.594,73        10.458.535,20
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    22.668.691,96
+
+SEÇÃO        = 2
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    18     ROSA COSTA               1.497.159,64           374.290,34         1.871.449,98     26.072,91         1.845.377,07
+    38     PEDRO ALMEIDA            5.202.519,20           705.962,28         5.908.481,48     68.915,78         5.839.565,70
+    58     RENATA RIBEIRO           8.561.055,38         1.198.515,49         9.759.570,87     73.133,11         9.686.437,76
+    78     LEONARDO MACHADO         2.163.328,06           731.118,84         2.894.446,90     23.336,28         2.871.110,62
+    98     JOAO SILVA               3.734.795,59           666.087,43         4.400.883,02     25.108,15         4.375.774,87
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    24.618.266,02
+
+SEÇÃO        = 3
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     3     JULIANA FREITAS          6.435.937,41           988.177,12         7.424.114,53     80.191,69         7.343.922,84
+    23     LAURA LOBO               5.824.589,95           497.718,76         6.322.308,71     95.088,76         6.227.219,95
+    43     DANIEL NASCIMENTO        7.227.440,09           180.031,54         7.407.471,63     46.644,75         7.360.826,88
+    63     JOAO SILVA                 693.864,01         1.327.859,78         2.021.723,79     31.787,53         1.989.936,26
+    83     RENATA RIBEIRO           5.952.613,86           248.258,67         6.200.872,53     22.959,18         6.177.913,35
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    29.099.819,28
+
+SEÇÃO        = 4
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     8     PEDRO ALMEIDA              642.373,45           735.888,07         1.378.261,52     63.688,09         1.314.573,43
+    28     DANIEL NASCIMENTO        6.785.067,85            31.808,05         6.816.875,90     52.410,94         6.764.464,96
+    48     ANA PEREIRA              1.830.111,25           667.690,70         2.497.801,95     31.134,67         2.466.667,28
+    68     RENATA RIBEIRO           7.680.333,31         1.320.480,38         9.000.813,69     68.075,80         8.932.737,89
+    88     PAULO LIMA               3.302.643,94           367.979,15         3.670.623,09     96.640,84         3.573.982,25
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    23.052.425,81
+TOTAL DE SALÁRIOS DO DEPARTAMENTO:    99.439.203,07
+                                             RELATÓRIO DE PAGAMENTO               PAG.   4
+
+DEPARTAMENTO = 4
+SEÇÃO        = 1
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     9     JULIANA FREITAS          7.737.553,26           921.760,35         8.659.313,61     87.832,79         8.571.480,82
+    29     ALINE SOUZA              3.442.837,05           721.910,52         4.164.747,57     48.419,58         4.116.327,99
+    49     ANA PEREIRA              1.020.825,50           412.699,95         1.433.525,45     44.352,03         1.389.173,42
+    69     BRUNO RODRIGUES            667.447,08           317.353,16           984.800,24     31.307,84           953.492,40
+    89     GUSTAVO BARBOSA          8.779.648,15           817.959,59         9.597.607,74     97.608,61         9.499.999,13
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    24.530.473,76
+
+SEÇÃO        = 2
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    14     LAURA LOBO               5.146.833,71           986.596,61         6.133.430,32     69.722,84         6.063.707,48
+    34     ROSA COSTA               8.577.152,14           642.184,96         9.219.337,10     59.601,99         9.159.735,11
+    54     BRUNO RODRIGUES          4.604.241,14           963.296,15         5.567.537,29     13.823,05         5.553.714,24
+    74     PEDRO ALMEIDA            6.303.447,25           970.299,39         7.273.746,64     49.283,72         7.224.462,92
+    94     MARCELO FERREIRA         7.843.902,19           831.849,58         8.675.751,77     87.179,73         8.588.572,04
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    36.590.191,79
+
+SEÇÃO        = 3
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    19     RICARDO CARVALHO           330.608,41           858.516,97         1.189.125,38     79.983,98         1.109.141,40
+    39     PEDRO ALMEIDA            4.352.760,31           885.240,62         5.238.000,93     61.266,89         5.176.734,04
+    59     RICARDO CARVALHO         1.775.320,51            26.344,97         1.801.665,48     96.473,79         1.705.191,69
+    79     ADRIANA MOURA            4.830.349,42           616.330,16         5.446.679,58      8.601,57         5.438.078,01
+    99     JOAO SILVA               5.572.399,61           962.445,18         6.534.844,79      5.413,13         6.529.431,66
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    19.958.576,80
+
+SEÇÃO        = 4
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     4     GUSTAVO BARBOSA          3.085.123,49           243.413,29         3.328.536,78     16.651,79         3.311.884,99
+    24     JOAO SILVA               7.287.842,77           528.885,14         7.816.727,91     52.508,25         7.764.219,66
+    44     GUSTAVO BARBOSA          8.966.137,61            85.369,33         9.051.506,94     90.028,66         8.961.478,28
+    64     JOAO SILVA               6.491.906,49            60.708,91         6.552.615,40     37.285,35         6.515.330,05
+    84     PEDRO ALMEIDA            8.952.089,79           168.179,87         9.120.269,66     16.389,06         9.103.880,60
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    35.656.793,58
+TOTAL DE SALÁRIOS DO DEPARTAMENTO:   116.736.035,93
+                                             RELATÓRIO DE PAGAMENTO               PAG.   5
+
+DEPARTAMENTO = 5
+SEÇÃO        = 1
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO     5     ALINE SOUZA              6.336.455,73           926.295,08         7.262.750,81     72.239,57         7.190.511,24
+    25     JULIANA FREITAS            677.810,03            58.209,10           736.019,13     20.763,80           715.255,33
+    45     JULIANA FREITAS          8.238.493,06         1.142.931,39         9.381.424,45     43.285,29         9.338.139,16
+    65     ALINE SOUZA                183.452,91            63.999,67           247.452,58     86.125,82           161.326,76
+    85     PEDRO ALMEIDA            6.722.348,46           472.289,75         7.194.638,21     64.365,35         7.130.272,86
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    24.535.505,35
+
+SEÇÃO        = 2
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    10     PAULO LIMA               3.086.371,41           225.051,07         3.311.422,48     38.032,33         3.273.390,15
+    30     FERNANDA BATISTA         6.681.725,32           373.593,35         7.055.318,67     88.516,20         6.966.802,47
+    50     VITOR SERRA              1.769.808,18           404.251,47         2.174.059,65      9.377,74         2.164.681,91
+    70     MARCELO FERREIRA         5.252.270,60           449.035,87         5.701.306,47     65.036,27         5.636.270,20
+    90     LAURA LOBO                 582.065,30           994.963,95         1.577.029,25     79.688,76         1.497.340,49
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    19.538.485,22
+
+SEÇÃO        = 3
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    15     PEDRO ALMEIDA            9.659.274,42           504.802,56        10.164.076,98     14.239,46        10.149.837,52
+    35     BRUNO RODRIGUES          3.801.853,77           523.045,10         4.324.898,87     76.394,22         4.248.504,65
+    55     MARCELO FERREIRA         7.177.558,29           313.067,79         7.490.626,08     85.387,56         7.405.238,52
+    75     CARLOS SANTOS            6.301.816,10           909.794,24         7.211.610,34      6.133,19         7.205.477,15
+    95     ADRIANA MOURA            5.502.955,28           277.521,25         5.780.476,53      2.821,49         5.777.655,04
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    34.786.712,88
+
+SEÇÃO        = 4
+
+CÓDIGO     NOME                     SAL. FIXO            COMISSÃO            SAL. BRUTO        DESCONTO          SAL. LÍQUIDO    20     RICARDO CARVALHO         5.221.272,92         1.326.093,40         6.547.366,32     16.545,52         6.530.820,80
+    40     BRUNO RODRIGUES            295.508,68         1.458.755,15         1.754.263,83     35.682,92         1.718.580,91
+    60     ADRIANA MOURA            3.204.124,44         1.499.171,95         4.703.296,39     10.290,30         4.693.006,09
+    80     MARCELO FERREIRA         9.711.339,04            77.678,12         9.789.017,16     53.755,02         9.735.262,14
+   100     ANA PEREIRA              9.194.136,11           872.778,80        10.066.914,91     59.924,34        10.006.990,57
+
+
+TOTAL DE SALÁRIOS DA SEÇÃO:    32.684.660,51
+TOTAL DE SALÁRIOS DO DEPARTAMENTO:    78.860.703,45

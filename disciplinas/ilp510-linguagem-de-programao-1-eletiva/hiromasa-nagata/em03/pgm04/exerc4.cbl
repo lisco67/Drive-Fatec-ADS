@@ -1,0 +1,157 @@
+       IDENTIFICATION    DIVISION.
+       PROGRAM-ID.    EXERC4.
+       AUTHOR.        YHAGO.
+       INSTALLATION.    FATEC-SP.
+       DATE-WRITTEN.    24/05/2025.
+       DATE-COMPILED.
+       SECURITY.    APENAS O AUTOR PODE MODIFICAR.
+
+       ENVIRONMENT    DIVISION.
+       CONFIGURATION    SECTION.
+       SOURCE-COMPUTER.    IBM-PC.
+       OBJECT-COMPUTER.    IBM-PC.
+       SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT     SECTION.
+       FILE-CONTROL.
+           SELECT CAD-CLIENTE ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+           SELECT ARQ-SORT ASSIGN TO DISK.
+           SELECT REL-GERAL ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+
+       DATA    DIVISION.
+       FILE    SECTION.
+       FD CAD-CLIENTE
+           LABEL RECORD STANDARD
+           VALUE OF FILE-ID IS "CADENT.DAT".
+       01 REG-CLIENTE.
+           02 CODIGO-ENT    PIC 9(03).
+           02 CPF-ENT       PIC 9(11).
+           02 NOME-ENT      PIC X(30).
+           02 ESTADO-ENT    PIC X(02).
+           02 CIDADE-ENT    PIC X(30).
+           02 EMAIL-ENT    PIC X(30).
+       SD ARQ-SORT.
+       01 REG-SORT.
+           02 CODIGO-SORT    PIC 9(03).
+           02 CPF-SORT       PIC 9(11).
+           02 NOME-SORT      PIC X(30).
+           02 ESTADO-SORT    PIC X(02).
+           02 CIDADE-SORT    PIC X(30).
+           02 EMAIL-SORT    PIC X(30).
+       FD REL-GERAL
+           LABEL RECORD  OMITTED.
+       01 REG-ATR      PIC X(80).
+       WORKING-STORAGE SECTION.
+           77 FIM-ARQ    PIC X(03) VALUE "NAO".
+           77 CT-LIN       PIC 9(02) VALUE 20.
+           77 CT-PAG       PIC 9(02) VALUE ZEROS.
+           77 CPF-STR    PIC X(11) VALUE ZEROS.
+           77 DIG01      PIC X(1) VALUE ZEROS.
+           77 DIG02      PIC X(1) VALUE ZEROS.
+           77 ESTADO     PIC X(02) VALUE ZEROS.
+           77 CIDADE     PIC X(30) VALUE ZEROS.
+       01 CAB.
+           02 FILLER     PIC X(80) VALUE SPACES.
+       01 CAB-01.
+           02 FILLER     PIC X(20) VALUE SPACES.
+           02 FILLER     PIC X(37)
+               VALUE "RELAÇÃO DE CLIENTES POR ESTADO/CIDADE".
+           02 FILLER     PIC X(5) VALUE SPACES.
+           02 FILLER     PIC X(05) VALUE "PAG. ".
+           02 VAR-PAG    PIC ZZ9.
+       01 CAB-ESTADO.
+           02 FILLER     PIC X(08) VALUE "ESTADO: ".
+           02 VAR-ESTADO PIC X(02).
+       01 CAB-CIDADE.
+           02 FILLER     PIC X(08) VALUE "CIDADE: ".
+           02 VAR-CIDADE PIC X(30).
+       01 CAB-02.
+           02 FILLER     PIC X(04) VALUE "CPF".
+           02 FILLER     PIC X(20) VALUE SPACES.
+           02 FILLER     PIC X(04) VALUE "NOME".
+           02 FILLER     PIC X(27) VALUE SPACES.
+           02 FILLER     PIC X(05) VALUE "EMAIL".
+       01 DETALHE.
+           02 VAR-CPF    PIC 999.999.999.
+           02 FILLER     PIC X(01) VALUE "-".
+           02 VAR-DIG01  PIC 9.
+           02 VAR-DIG02  PIC 9.
+           02 FILLER     PIC X(10) VALUE SPACES.
+           02 VAR-NOME   PIC X(30).
+           02 FILLER     PIC X(1) VALUE SPACES.
+           02 VAR-EMAIL  PIC X(30).
+       PROCEDURE    DIVISION.
+       PGM-EX05.
+       SORT    ARQ-SORT
+               ON ASCENDING KEY ESTADO-SORT
+               ON ASCENDING KEY CIDADE-SORT
+               ON ASCENDING KEY CPF-SORT
+               USING CAD-CLIENTE
+               OUTPUT PROCEDURE ROT-RELATORIO.
+       STOP    RUN.
+
+       ROT-RELATORIO SECTION.
+           PERFORM INICIO-SAIDA.
+           PERFORM PRINCIPAL-SAIDA
+                   UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM FIM-SAIDA.
+
+       INICIO-SAIDA SECTION.
+           OPEN OUTPUT REL-GERAL.
+           PERFORM LEITURA-SAIDA.
+
+       LEITURA-SAIDA SECTION.
+           RETURN ARQ-SORT
+            AT END MOVE 'SIM' TO FIM-ARQ.
+
+       PRINCIPAL-SAIDA SECTION.
+           PERFORM GRAVACAO-SAIDA.
+           PERFORM LEITURA-SAIDA.
+
+       GRAVACAO-SAIDA SECTION.
+           IF CT-LIN GREATER THAN 19
+               PERFORM CABECALHO-01
+           END-IF.
+           IF NOT(ESTADO-SORT = ESTADO) OR NOT(CIDADE-SORT = CIDADE)
+                PERFORM CABECALHO-02
+           END-IF.
+           MOVE ESTADO-SORT TO ESTADO.
+           MOVE CIDADE-SORT TO CIDADE.
+           PERFORM DETALHES.
+       CABECALHO-01   SECTION.
+           ADD 1         TO CT-PAG.
+           MOVE CT-PAG   TO VAR-PAG.
+           MOVE SPACES   TO REG-ATR.
+           WRITE REG-ATR AFTER ADVANCING PAGE.
+           WRITE REG-ATR FROM CAB-01 AFTER ADVANCING 1 LINE.
+           WRITE REG-ATR FROM CAB AFTER ADVANCING 1 LINE.
+           MOVE 1  TO CT-LIN.
+       CABECALHO-02 SECTION.
+           MOVE ESTADO-SORT TO VAR-ESTADO.
+           MOVE CIDADE-SORT TO VAR-CIDADE.
+           IF CT-LIN = 1
+               WRITE REG-ATR FROM CAB-ESTADO AFTER ADVANCING 1 LINE
+               ADD 4         TO CT-LIN
+           ELSE
+               WRITE REG-ATR FROM CAB-ESTADO AFTER ADVANCING 2 LINE
+               ADD 5         TO CT-LIN
+           END-IF.
+           WRITE REG-ATR FROM CAB-CIDADE AFTER ADVANCING 1 LINE.
+           WRITE REG-ATR FROM CAB-02 AFTER ADVANCING 2 LINE.
+
+       DETALHES SECTION.
+           MOVE CPF-SORT TO CPF-STR.
+           MOVE CPF-STR(10:1) TO DIG01.
+           MOVE CPF-STR(11:1) TO DIG02.
+           MOVE CPF-SORT(1:9)    TO VAR-CPF.
+           MOVE DIG01 TO VAR-DIG01.
+           MOVE DIG02 TO VAR-DIG02.
+           MOVE NOME-SORT TO VAR-NOME
+           MOVE EMAIL-SORT      TO VAR-EMAIL.
+           WRITE REG-ATR FROM DETALHE AFTER ADVANCING 1 LINE.
+           ADD 1         TO CT-LIN.
+
+       FIM-SAIDA SECTION.
+           CLOSE REL-GERAL.

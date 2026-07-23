@@ -1,0 +1,111 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 16-Jun-25 16:00 Page   1
+*                                      EXERC1.CBL
+* Options: LIST(EXERC1.LST) ASMLIST(EXERC1.GRP)
+     1 IDENTIFICATION DIVISION.
+     2     PROGRAM-ID.    EXERC1.
+     3     AUTHOR.        YHAGO.
+     4     DATE-WRITTEN.  14/06/25.
+     5     DATE-COMPILED.
+     6     SECURITY.      SOMENTE O AUTOR PODE MODIFICALO.
+     7 ENVIRONMENT DIVISION.
+     8 CONFIGURATION SECTION.
+     9     SPECIAL-NAMES.  DECIMAL-POINT IS COMMA.
+    10 INPUT-OUTPUT SECTION.
+    11 FILE-CONTROL.
+    12     SELECT ARQA ASSIGN TO DISK
+    13     ORGANIZATION IS LINE SEQUENTIAL.
+    14     SELECT ARQB ASSIGN TO DISK
+    15     ORGANIZATION IS LINE SEQUENTIAL.
+    16     SELECT  ARQC ASSIGN TO DISK
+    17     ORGANIZATION IS LINE SEQUENTIAL.
+    18 DATA DIVISION.
+    19 FILE SECTION.
+    20
+    21 FD ARQA
+    22     LABEL RECORD STANDARD
+    23     VALUE OF FILE-ID IS "ARQA.DAT".
+    24 01 REG-A.
+    25     02 CODIGO-A    PIC 9(03).
+    26     02 NOME-A      PIC X(30).
+    27     02 TURMA-A     PIC X(20).
+    28 FD ARQB
+    29     LABEL RECORD STANDARD
+    30     VALUE OF FILE-ID IS "ARQB.DAT".
+    31 01 REG-B.
+    32     02 CODIGO-B    PIC 9(03).
+    33     02 NOME-B      PIC X(30).
+    34     02 TURMA-B     PIC X(20).
+    35  FD ARQC
+    36     LABEL RECORD STANDARD
+    37     VALUE OF FILE-ID IS "ARQC.DAT".
+    38 01 REG-C.
+    39     02 CODIGO-C    PIC 9(03).
+    40     02 NOME-C      PIC X(30).
+    41     02 TURMA-C     PIC X(20).
+    42 WORKING-STORAGE SECTION.
+    43     77 CH-ARQA PIC X(04) VALUE SPACES.
+    44     77 CH-ARQB PIC  X(04) VALUE SPACES.
+    45
+    46 PROCEDURE DIVISION.
+    47
+    48 PGM-04.
+    49 PERFORM INICIO.
+    50 PERFORM PRINCIPAL
+    51     UNTIL CH-ARQA EQUAL CH-ARQB AND
+    52     CH-ARQB EQUAL   HIGH-VALUES.
+    53 PERFORM FIM.
+    54 STOP RUN.
+    55 INICIO.
+    56     OPEN INPUT ARQA
+    57                ARQB
+* Microsoft COBOL Version 4.5        L2.4 revision 002 16-Jun-25 16:00 Page   2
+*                                      EXERC1.CBL
+    58          OUTPUT ARQC.
+    59     PERFORM LER-ARQA.
+    60     PERFORM LER-ARQB.
+    61
+    62 LER-ARQA.
+    63     READ ARQA AT END MOVE HIGH-VALUE TO CH-ARQA.
+    64     IF  NOT(CH-ARQA EQUAL HIGH-VALUE)
+    65         MOVE CODIGO-A TO CH-ARQA
+    66     END-IF.
+    67 LER-ARQB.
+    68     READ ARQB AT END MOVE HIGH-VALUE TO CH-ARQB.
+    69     IF  NOT(CH-ARQB EQUAL HIGH-VALUE)
+    70         MOVE CODIGO-B TO CH-ARQB
+    71     END-IF.
+    72 PRINCIPAL.
+    73     IF CH-ARQA EQUAL CH-ARQB
+    74         PERFORM IGUAL
+    75         PERFORM LER-ARQA
+    76         PERFORM LER-ARQB
+    77     ELSE IF CH-ARQA LESS CH-ARQB
+    78         PERFORM ARQA-MENOR
+    79         PERFORM LER-ARQA
+    80     ELSE IF CH-ARQB LESS CH-ARQA
+    81         PERFORM ARQB-MENOR
+    82         PERFORM LER-ARQB
+    83     END-IF.
+    84
+    85 IGUAL.
+    86     PERFORM GRAVAR-ARQA.
+    87     PERFORM GRAVAR-ARQB.
+    88 ARQA-MENOR.
+    89     PERFORM GRAVAR-ARQA.
+    90 ARQB-MENOR.
+    91     PERFORM GRAVAR-ARQB.
+    92
+    93 GRAVAR-ARQA.
+    94     MOVE REG-A TO REG-C.
+    95     WRITE REG-C.
+    96 GRAVAR-ARQB.
+    97     MOVE REG-B TO REG-C.
+    98     WRITE REG-C.
+    99 FIM.
+   100     CLOSE ARQA ARQB ARQC.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1320     Code:         544     Dictionary:        1563

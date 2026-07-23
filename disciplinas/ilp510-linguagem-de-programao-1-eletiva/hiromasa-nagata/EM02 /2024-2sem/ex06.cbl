@@ -1,0 +1,326 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EX06.
+       AUTHOR..
+       INSTALLATION. FATEC-SP.
+       DATE-WRITTEN. .
+       DATE-COMPILED.
+       SECURITY. APENAS O AUTOR PODE LER E MODIFICAR.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+           OBJECT-COMPUTER. IBM-PC.
+           SOURCE-COMPUTER. IBM-PC.
+           SPECIAL-NAMES.   DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADCLI ASSIGN TO DISK ORGANIZATION IS LINE 
+               SEQUENTIAL.
+           SELECT CADOK ASSIGN TO DISK ORGANIZATION IS LINE
+               SEQUENTIAL.
+           SELECT RELOCOR ASSIGN TO DISK.
+
+       DATA DIVISION.
+       FILE SECTION.
+       FD CADCLI LABEL RECORD ARE STANDARD VALUE OF FILE-ID IS
+           "CADCLI.DAT".
+           01 REG-CLI.
+             02 CODIGO-CLI       PIC 9(03).
+             02 CPF-CLI          PIC 9(11).
+             02 CPF-CLI-RED REDEFINES CPF-CLI.
+               03 DIGT-1  PIC 9.                
+               03 DIGT-2  PIC 9.
+               03 DIGT-3  PIC 9.
+               03 DIGT-4  PIC 9.
+               03 DIGT-5  PIC 9.
+               03 DIGT-6  PIC 9.
+               03 DIGT-7  PIC 9.
+               03 DIGT-8  PIC 9.
+               03 DIGT-9  PIC 9.
+               03 DIGT-10 PIC 9.
+               03 DIGT-11 PIC 9.                
+             02 NOME-CLI         PIC X(30).
+               88 NOME-INVALIDO VALUE SPACES.
+             02 ESTADO-CLI       PIC X(02).
+               88 ESTADO-VALIDO VALUE 
+                "AC" "AL" "AP" "AM" "BA" "CE" "DF" "ES" "GO"
+                "MA" "MT" "MS" "MG" "PA" "PB" "PR" "PE" "PI"
+                "RJ" "RN" "RS" "RO" "RR" "SC" "SP" "SE" "TO".
+             02 CIDADE-CLI       PIC X(30).
+               88 CIDADE-INVALIDA VALUE SPACES.
+             02 EMAIL-CLI        PIC X(30).
+               88 EMAIL-INVALIDO VALUE SPACES.
+             02 TELEFONE-CLI     PIC 9(10).
+
+       FD CADOK LABEL RECORD ARE STANDARD VALUE OF FILE-ID IS
+           "CADOK.DAT".
+           01 REG-OK.
+             02 CPF-OK          PIC 9(11).
+             02 NOME-OK         PIC X(30).
+             02 ESTADO-OK       PIC X(02).
+             02 CIDADE-OK       PIC X(30).
+             02 EMAIL-OK        PIC X(30).
+             02 TELEFONE-OK     PIC 9(10).
+
+       FD RELOCOR LABEL RECORD IS OMITTED.
+           01 REL-OCOR PIC X(80) VALUE SPACES.
+       
+       WORKING-STORAGE SECTION.
+           77 FIM-ARQ PIC X(03) VALUE "NAO".
+
+           77 CT-LIN PIC 9(02) VALUE 31.
+           77 CT-PAG PIC 9(03) VALUE ZEROS.
+
+           77 CH-ERRO PIC X(03) VALUE "NAO".
+           77 ERROS-ENT PIC 9 OCCURS 5 TIMES.
+           77 INDICE-ERRO PIC 9 VALUE 0.
+
+           77 CPF-VALIDO PIC X(03) VALUE "SIM".
+           77 CPF-DIGT1-CORRETO PIC 9.
+           77 CPF-DIGT2-CORRETO PIC 9.
+           77 CPF-SOMA-MULT-DIGITOS PIC 9999 VALUE ZEROS.
+           77 CPF-RESTO-DIV PIC 99 VALUE ZEROS.
+           77 CPF-MULTI-DIGITOS PIC 99 OCCURS 10 TIMES.
+
+           01 TABELA-ERROS.
+             02 FILLER PIC X(21) VALUE "CPF INVÁLIDO        ".
+             02 FILLER PIC X(21) VALUE "NOME NÃO INFORMADO  ".
+             02 FILLER PIC X(21) VALUE "ESTADO INVÁLIDO     ".
+             02 FILLER PIC X(21) VALUE "CIDADE NÃO INFORMADA".
+             02 FILLER PIC X(21) VALUE "EMAIL SEM DESCRIÇÃO".
+
+           01 TABELA-ERROS-VET REDEFINES TABELA-ERROS.
+             02 ERROS PIC X(21) OCCURS 5 TIMES. 
+
+           01 CAB-01.
+             02 FILLER PIC X(32) VALUE SPACES.
+             02 FILLER PIC X(17) VALUE "TURISMAR TURISMOS".
+             02 FILLER PIC X(01) VALUE SPACES.
+             02 FILLER PIC X(32) VALUE SPACES.
+
+           01 CAB-02.
+             02 FILLER PIC X(17) VALUE SPACES.
+             02 FILLER PIC X(23) VALUE "RELATÓRIO DE DADOS DE ".
+             02 FILLER PIC X(23) VALUE "CLIENTES INCONSISTENTES".
+             02 FILLER PIC X(17) VALUE SPACES.
+
+           01 CAB-03.
+             02 FILLER PIC X(05) VALUE SPACES.
+             02 FILLER PIC X(18) VALUE "CÓDIGO DO CLIENTE".
+             02 FILLER PIC X(05) VALUE SPACES.
+             02 FILLER PIC X(16) VALUE "DADOS INVÁLIDOS".
+             02 FILLER PIC X(36) VALUE SPACES.
+
+           01 CAB-04.
+             02 FILLER PIC X(80) VALUE ALL "-".
+
+           01 DETALHE.
+             02 FILLER PIC X(13) VALUE SPACES.
+             02 DET-COD PIC X(03).
+             02 FILLER PIC X(12) VALUE SPACES.
+             02 DET-ERRO PIC X(22).
+             02 FILLER PIC X(30) VALUE SPACES.
+
+       PROCEDURE DIVISION.
+       PGM-EX06.
+           PERFORM INICIO.
+           PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM TERMINO.
+           STOP RUN.
+
+       INICIO.
+           OPEN INPUT CADCLI OUTPUT CADOK RELOCOR.
+           PERFORM LEITURA.
+           
+       LEITURA.
+           READ CADCLI AT END MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL.
+           PERFORM VALIDACAO.
+           IF CH-ERRO EQUAL "SIM"
+               PERFORM IMPRESSAO-REL
+           ELSE
+               PERFORM GRAVACAO-CADOK.
+
+           PERFORM LEITURA.
+
+       VALIDACAO.
+           PERFORM VALIDAR-CPF.
+           IF (CPF-VALIDO EQUAL "NAO") OR (NOME-INVALIDO) OR 
+              (NOT ESTADO-VALIDO) OR (CIDADE-INVALIDA) OR 
+              (EMAIL-INVALIDO)
+               MOVE "SIM" TO CH-ERRO
+               PERFORM CAPTURAR-ERROS
+           ELSE
+               MOVE "NAO" TO CH-ERRO.
+
+       CAPTURAR-ERROS.
+           IF CPF-VALIDO EQUAL "NAO"
+             MOVE 1 TO ERROS-ENT(1)
+           ELSE
+             MOVE 0 TO ERROS-ENT(1).
+             
+           IF NOME-INVALIDO
+             MOVE 1 TO ERROS-ENT(2)
+           ELSE
+             MOVE 0 TO ERROS-ENT(2).
+
+           IF (NOT ESTADO-VALIDO)
+             MOVE 1 TO ERROS-ENT(3)
+           ELSE
+             MOVE 0 TO ERROS-ENT(3).
+
+           IF CIDADE-INVALIDA
+             MOVE 1 TO ERROS-ENT(4)
+           ELSE
+             MOVE 0 TO ERROS-ENT(4).
+
+           IF EMAIL-INVALIDO
+             MOVE 1 TO ERROS-ENT(5)
+           ELSE
+             MOVE 0 TO ERROS-ENT(5).
+
+       IMPRESSAO-REL.
+           IF CT-LIN GREATER THAN 30
+               PERFORM CABECALHO.
+           PERFORM IMP-DET.
+
+       CABECALHO.
+           MOVE 1 TO CT-LIN.
+           ADD 1 TO CT-PAG.
+           MOVE SPACES TO REL-OCOR.
+           WRITE REL-OCOR AFTER ADVANCING PAGE.
+           WRITE REL-OCOR FROM CAB-01 AFTER ADVANCING 1 LINE.
+           WRITE REL-OCOR FROM CAB-02 AFTER ADVANCING 2 LINES.
+           WRITE REL-OCOR FROM CAB-03 AFTER ADVANCING 2 LINES.
+           WRITE REL-OCOR FROM CAB-04 AFTER ADVANCING 1 LINE.
+           MOVE SPACES TO REL-OCOR.
+           WRITE REL-OCOR AFTER ADVANCING 1 LINE.
+
+       IMP-DET.
+           MOVE CODIGO-CLI TO DET-COD.
+           PERFORM IMP-ERROS 5 TIMES.
+           MOVE 0 TO INDICE-ERRO.
+           
+           MOVE SPACES TO REL-OCOR.
+           WRITE REL-OCOR AFTER ADVANCING 1 LINE.
+           ADD 1 TO CT-LIN.
+
+           MOVE 0 TO ERROS-ENT(1).           
+           MOVE 0 TO ERROS-ENT(2).
+           MOVE 0 TO ERROS-ENT(3).
+           MOVE 0 TO ERROS-ENT(4).
+           MOVE 0 TO ERROS-ENT(5).           
+
+       IMP-ERROS.
+           ADD 1 TO INDICE-ERRO.
+           IF ERROS-ENT(INDICE-ERRO) EQUAL 1
+             MOVE ERROS(INDICE-ERRO) TO DET-ERRO
+             WRITE REL-OCOR FROM DETALHE AFTER ADVANCING 1 LINE
+             MOVE SPACES TO DET-COD
+
+             IF CT-LIN GREATER THAN 30
+                MOVE 0 TO INDICE-ERRO
+                PERFORM CABECALHO
+                PERFORM IMP-DET
+             END-IF
+             ADD 1 TO CT-LIN
+           END-IF.
+
+       GRAVACAO-CADOK.
+           MOVE CPF-CLI TO CPF-OK.
+           MOVE NOME-CLI TO NOME-OK.
+           MOVE ESTADO-CLI TO ESTADO-OK.
+           MOVE CIDADE-CLI TO CIDADE-OK.
+           MOVE EMAIL-CLI TO EMAIL-OK.
+           MOVE TELEFONE-CLI TO TELEFONE-OK.
+           WRITE REG-OK.
+
+       VALIDAR-CPF.
+           IF CPF-CLI IS NUMERIC
+             IF CPF-CLI EQUAL 11111111111 OR 
+                CPF-CLI EQUAL 22222222222 OR
+                CPF-CLI EQUAL 33333333333 OR
+                CPF-CLI EQUAL 44444444444 OR
+                CPF-CLI EQUAL 55555555555 OR
+                CPF-CLI EQUAL 66666666666 OR
+                CPF-CLI EQUAL 77777777777 OR
+                CPF-CLI EQUAL 88888888888 OR
+                CPF-CLI EQUAL 99999999999
+                   MOVE "NAO" TO CPF-VALIDO
+             ELSE
+               MULTIPLY 10 BY DIGT-1 GIVING CPF-MULTI-DIGITOS(1)
+               MULTIPLY 09 BY DIGT-2 GIVING CPF-MULTI-DIGITOS(2)
+               MULTIPLY 08 BY DIGT-3 GIVING CPF-MULTI-DIGITOS(3)
+               MULTIPLY 07 BY DIGT-4 GIVING CPF-MULTI-DIGITOS(4)
+               MULTIPLY 06 BY DIGT-5 GIVING CPF-MULTI-DIGITOS(5)
+               MULTIPLY 05 BY DIGT-6 GIVING CPF-MULTI-DIGITOS(6)
+               MULTIPLY 04 BY DIGT-7 GIVING CPF-MULTI-DIGITOS(7)
+               MULTIPLY 03 BY DIGT-8 GIVING CPF-MULTI-DIGITOS(8)
+               MULTIPLY 02 BY DIGT-9 GIVING CPF-MULTI-DIGITOS(9)
+
+               ADD CPF-MULTI-DIGITOS(1) CPF-MULTI-DIGITOS(2) 
+                   CPF-MULTI-DIGITOS(3) CPF-MULTI-DIGITOS(4)
+                   CPF-MULTI-DIGITOS(5) CPF-MULTI-DIGITOS(6) 
+                   CPF-MULTI-DIGITOS(7) CPF-MULTI-DIGITOS(8)
+                   CPF-MULTI-DIGITOS(9) TO CPF-SOMA-MULT-DIGITOS
+
+               DIVIDE CPF-SOMA-MULT-DIGITOS BY 11 
+                   GIVING CPF-RESTO-DIV REMAINDER CPF-RESTO-DIV
+
+               IF CPF-RESTO-DIV LESS THAN 2
+                   MOVE 0 TO CPF-DIGT1-CORRETO
+               ELSE
+                   SUBTRACT CPF-RESTO-DIV FROM 11 
+                       GIVING CPF-DIGT1-CORRETO 
+               END-IF
+                   MOVE 0 TO CPF-SOMA-MULT-DIGITOS
+
+               MULTIPLY 11 BY DIGT-1 GIVING CPF-MULTI-DIGITOS(1)
+               MULTIPLY 10 BY DIGT-2 GIVING CPF-MULTI-DIGITOS(2)
+               MULTIPLY 09 BY DIGT-3 GIVING CPF-MULTI-DIGITOS(3)
+               MULTIPLY 08 BY DIGT-4 GIVING CPF-MULTI-DIGITOS(4)
+               MULTIPLY 07 BY DIGT-5 GIVING CPF-MULTI-DIGITOS(5)
+               MULTIPLY 06 BY DIGT-6 GIVING CPF-MULTI-DIGITOS(6)
+               MULTIPLY 05 BY DIGT-7 GIVING CPF-MULTI-DIGITOS(7)
+               MULTIPLY 04 BY DIGT-8 GIVING CPF-MULTI-DIGITOS(8)
+               MULTIPLY 03 BY DIGT-9 GIVING CPF-MULTI-DIGITOS(9)
+               MULTIPLY 02 BY CPF-DIGT1-CORRETO 
+                   GIVING CPF-MULTI-DIGITOS(10)
+
+               ADD CPF-MULTI-DIGITOS(1) CPF-MULTI-DIGITOS(2)
+                   CPF-MULTI-DIGITOS(3) CPF-MULTI-DIGITOS(4)
+                   CPF-MULTI-DIGITOS(5) CPF-MULTI-DIGITOS(6)
+                   CPF-MULTI-DIGITOS(7) CPF-MULTI-DIGITOS(8)
+                   CPF-MULTI-DIGITOS(9) CPF-MULTI-DIGITOS(10)
+                   TO CPF-SOMA-MULT-DIGITOS
+
+               DIVIDE CPF-SOMA-MULT-DIGITOS BY 11 
+                   GIVING CPF-RESTO-DIV REMAINDER CPF-RESTO-DIV
+
+               IF CPF-RESTO-DIV LESS THAN 2
+                  MOVE 0 TO CPF-DIGT2-CORRETO
+               ELSE
+                  SUBTRACT CPF-RESTO-DIV FROM 11 
+                      GIVING CPF-DIGT2-CORRETO
+               END-IF
+               MOVE 0 TO CPF-SOMA-MULT-DIGITOS     
+
+               IF (DIGT-10 NOT EQUAL CPF-DIGT1-CORRETO) OR
+                  (DIGT-11 NOT EQUAL CPF-DIGT2-CORRETO)
+                     MOVE "NAO" TO CPF-VALIDO
+               ELSE
+                  MOVE "SIM" TO CPF-VALIDO
+               END-IF
+             END-IF
+           ELSE
+               MOVE "NAO" TO CPF-VALIDO
+           END-IF.
+        
+           MOVE 0 TO CPF-DIGT1-CORRETO.
+           MOVE 0 TO CPF-DIGT2-CORRETO.
+           MOVE 0 TO CPF-SOMA-MULT-DIGITOS.
+           MOVE 0 TO CPF-RESTO-DIV.
+
+       TERMINO.
+           CLOSE CADCLI CADOK RELOCOR.

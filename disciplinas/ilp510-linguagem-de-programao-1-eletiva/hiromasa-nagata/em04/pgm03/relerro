@@ -1,0 +1,47 @@
+
+                    RELAÇÃO DE MERCADORIAS               PAG.   1
+
+                      ERROS DE ATUALIZAÇÃO
+CODIGO     DESCRIÇÀO                        MENSAGEM
+
+   1     MIOJO                              ALTERAÇÃO P/REG. INEXISTENTE
+   3     ACUCAR                             EXCLUSÃO P/REG. INEXISTENTE
+   4     ARROZ                              ALTERAÇÃO P/REG. INEXISTENTE
+   5     ARROZ                              EXCLUSÃO P/REG. INEXISTENTE
+   6     REFRIGERANTE                       EXCLUSÃO P/REG. INEXISTENTE
+   9     IOGURTE                            ALTERAÇÃO P/REG. INEXISTENTE
+  12     SAL                                ALTERAÇÃO P/REG. INEXISTENTE
+  14     CAFE                               ALTERAÇÃO P/REG. INEXISTENTE
+  16     SUCO                               ALTERAÇÃO P/REG. INEXISTENTE
+  17     FARINHA                            EXCLUSÃO P/REG. INEXISTENTE
+  19     ESCOVA                             EXCLUSÃO P/REG. INEXISTENTE
+  22     CAFE                               EXCLUSÃO P/REG. INEXISTENTE
+  23     ESCOVA                             EXCLUSÃO P/REG. INEXISTENTE
+  27     MACARRAO                           ALTERAÇÃO P/REG. INEXISTENTE
+  28     BISCOITO                           ALTERAÇÃO P/REG. INEXISTENTE
+  29     BISCOITO                           EXCLUSÃO P/REG. INEXISTENTE
+  43     FARINHA                            INCLUSÃO P/REG. JÁ EXISTENTE
+  52     IOGURTE                            INCLUSÃO P/REG. JÁ EXISTENTE
+  54     CAFE                               INCLUSÃO P/REG. JÁ EXISTENTE
+  55     OLEO                               INCLUSÃO P/REG. JÁ EXISTENTE
+  58     CREME                              INCLUSÃO P/REG. JÁ EXISTENTE
+  65     MIOJO                              INCLUSÃO P/REG. JÁ EXISTENTE
+  67     IOGURTE                            INCLUSÃO P/REG. JÁ EXISTENTE
+  68     ESCOVA                             INCLUSÃO P/REG. JÁ EXISTENTE
+  70     ACUCAR                             INCLUSÃO P/REG. JÁ EXISTENTE
+  71     FARINHA                            INCLUSÃO P/REG. JÁ EXISTENTE
+  73     MACARRAO                           INCLUSÃO P/REG. JÁ EXISTENTE
+  83     CHOCOLATE                          INCLUSÃO P/REG. JÁ EXISTENTE
+  85     FARINHA                            INCLUSÃO P/REG. JÁ EXISTENTE
+  90     FEIJAO                             INCLUSÃO P/REG. JÁ EXISTENTE
+  97     ESCOVA                             INCLUSÃO P/REG. JÁ EXISTENTE
+  98     CAFE                               INCLUSÃO P/REG. JÁ EXISTENTE
+ 101     CREME                              ALTERAÇÃO P/REG. INEXISTENTE
+ 102     CAFE                               ALTERAÇÃO P/REG. INEXISTENTE
+                    RELAÇÃO DE MERCADORIAS               PAG.   2
+
+                      ERROS DE ATUALIZAÇÃO
+CODIGO     DESCRIÇÀO                        MENSAGEM
+
+ 103     FARINHA                            ALTERAÇÃO P/REG. INEXISTENTE
+ 105     CREME                              ALTERAÇÃO P/REG. INEXISTENTE

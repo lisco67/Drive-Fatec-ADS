@@ -1,0 +1,225 @@
+       IDENTIFICATION    DIVISION.
+       PROGRAM-ID.    EXERC6.
+       AUTHOR.        YHAGO.
+       INSTALLATION.    FATEC-SP.
+       DATE-WRITTEN.    26/05/2025.
+       DATE-COMPILED.
+       SECURITY.    APENAS O AUTOR PODE MODIFICAR.
+
+       ENVIRONMENT    DIVISION.
+       CONFIGURATION    SECTION.
+       SOURCE-COMPUTER.    MY-PC.
+       OBJECT-COMPUTER.    MY-PC.
+       SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT     SECTION.
+       FILE-CONTROL.
+           SELECT CADVEND ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+           SELECT ARQ-SORT ASSIGN TO DISK.
+           SELECT REL-PAG ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+
+       DATA    DIVISION.
+       FILE    SECTION.
+       FD CADVEND
+           LABEL RECORD STANDARD
+           VALUE OF FILE-ID IS "CADENT.DAT".
+       01 REG-VEND.
+           02 CODIDEP-ENT       PIC X(01).
+           02 CODISEC-ENT       PIC X(01).
+           02 CODIVEND-ENT      PIC 9(05).
+           02 NOME-ENT          PIC X(20).
+           02 VALVENDAS-ENT     PIC 9(07)V99.
+           02 SALFIXO-ENT       PIC 9(07)V99.
+           02 DESC-ENT          PIC 9(05)V99.
+       SD ARQ-SORT.
+       01 REG-SORT.
+           02 CODIDEP-SORT       PIC X(01).
+           02 CODISEC-SORT       PIC X(01).
+           02 CODIVEND-SORT      PIC 9(05).
+           02 NOME-SORT          PIC X(20).
+           02 VALVENDAS-SORT     PIC 9(07)V99.
+           02 SALFIXO-SORT       PIC 9(07)V99.
+           02 DESC-SORT          PIC 9(05)V99.
+       FD REL-PAG
+           LABEL RECORD  OMITTED.
+       01 REG-ATR      PIC X(130).
+       WORKING-STORAGE SECTION.
+           77 FIM-ARQ          PIC X(03) VALUE "NAO".
+           77 CT-LIN           PIC 9(02) VALUE 41.
+           77 CT-PAG           PIC 9(02) VALUE ZEROS.
+           77 COMISSAO         PIC 9(10)V99 VALUE ZEROS.
+           77 SALBRUTO         PIC 9(10)V99 VALUE ZEROS.
+           77 SALLIQUIDO       PIC 9(10)V99 VALUE ZEROS.
+           77 SOMA-SEC         PIC 9(10)V99 VALUE ZEROS.
+           77 SOMA-DEP         PIC 9(10)V99 VALUE ZEROS.
+           77 SEC              PIC X(01).
+           77 DEP              PIC X(01).
+
+       01 WHITE-CAB.
+           02 FILLER     PIC X(130) VALUE SPACES.
+       01 CAB-01.
+           02 FILLER     PIC X(45) VALUE SPACES.
+           02 FILLER     PIC X(22) VALUE "RELATÓRIO DE PAGAMENTO".
+           02 FILLER     PIC X(15) VALUE SPACES.
+           02 FILLER     PIC X(05) VALUE "PAG. ".
+           02 VAR-PAG    PIC ZZ9.
+       01 CAB-DEP.
+           02 FILLER     PIC X(15) VALUE "DEPARTAMENTO = ".
+           02 VAR-DEP PIC X(01).
+       01 CAB-SEC.
+           02 FILLER     PIC X(15) VALUE "SEÇÃO        = ".
+           02 VAR-SEC    PIC X(01).
+       01 CAB-02.
+           02 FILLER     PIC X(06) VALUE "CÓDIGO".
+           02 FILLER     PIC X(05) VALUE SPACES.
+           02 FILLER     PIC X(20) VALUE "NOME".
+           02 FILLER     PIC X(05) VALUE SPACES.
+           02 FILLER     PIC X(09) VALUE "SAL. FIXO".
+           02 FILLER     PIC X(12) VALUE SPACES.
+           02 FILLER     PIC X(08) VALUE "COMISSÃO".
+           02 FILLER     PIC X(12) VALUE SPACES.
+           02 FILLER     PIC X(10) VALUE "SAL. BRUTO".
+           02 FILLER     PIC X(08) VALUE SPACES.
+           02 FILLER     PIC X(08) VALUE "DESCONTO".
+           02 FILLER     PIC X(10) VALUE SPACES.
+           02 FILLER     PIC X(12) VALUE "SAL. LÍQUIDO".
+       01 DETALHE.
+           02 FILLER        PIC X(01) VALUE SPACES.
+           02 VAR-COD       PIC ZZZZ9.
+           02 FILLER        PIC X(5) VALUE SPACES.
+           02 VAR-NOME      PIC X(20) .
+           02 FILLER        PIC X(5) VALUE SPACES.
+           02 VAR-FIXO      PIC Z.ZZZ.ZZ9,99.
+           02 FILLER        PIC X(5) VALUE SPACES.
+           02 VAR-COMISSAO  PIC Z.ZZZ.ZZZ.ZZ9,99.
+           02 FILLER        PIC X(5) VALUE SPACES.
+           02 VAR-BRUTO     PIC Z.ZZZ.ZZZ.ZZ9,99.
+           02 FILLER        PIC X(5) VALUE SPACES.
+           02 VAR-DESCONTO  PIC ZZ.ZZ9,99.
+           02 FILLER        PIC X(5) VALUE SPACES.
+           02 VAR-LIQUIDO   PIC Z.ZZZ.ZZZ.ZZ9,99.
+
+       01 RODAPE-SEC.
+           02 FILLER     PIC X(28) VALUE "TOTAL DE SALÁRIOS DA SEÇÃO: ".
+           02 ROD-SEC  PIC Z.ZZZ.ZZZ.ZZ9,99.
+       01 RODAPE-DEP.
+           02 FILLER     PIC X(35)
+               VALUE "TOTAL DE SALÁRIOS DO DEPARTAMENTO: ".
+           02 ROD-DEP  PIC Z.ZZZ.ZZZ.ZZ9,99.
+       PROCEDURE    DIVISION.
+       PGM-EX05.
+       SORT    ARQ-SORT
+               ON ASCENDING KEY CODIDEP-SORT
+               ON ASCENDING KEY CODISEC-SORT
+               USING CADVEND
+               OUTPUT PROCEDURE ROT-RELATORIO.
+       STOP    RUN.
+
+       ROT-RELATORIO SECTION.
+           PERFORM INICIO-SAIDA.
+           PERFORM PRINCIPAL-SAIDA
+                   UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM FIM-SAIDA.
+
+       INICIO-SAIDA SECTION.
+           OPEN OUTPUT REL-PAG.
+           PERFORM LEITURA-SAIDA.
+
+       LEITURA-SAIDA SECTION.
+           RETURN ARQ-SORT
+            AT END
+            PERFORM RODAPE
+            MOVE 'SIM' TO FIM-ARQ.
+
+       PRINCIPAL-SAIDA SECTION.
+           PERFORM GRAVACAO-SAIDA.
+           PERFORM LEITURA-SAIDA.
+
+       GRAVACAO-SAIDA SECTION.
+           IF CT-LIN GREATER THAN 40
+               PERFORM CABECALHO-01
+           END-IF.
+           IF NOT(CODIDEP-SORT = DEP)
+                PERFORM CABECALHO-02
+           ELSE IF NOT(CODISEC-SORT = SEC)
+                PERFORM CABECALHO-03
+           END-IF.
+           MOVE CODIDEP-SORT TO DEP.
+           MOVE CODISEC-SORT TO SEC.
+           PERFORM DETALHES.
+       CABECALHO-01   SECTION.
+           ADD 1         TO CT-PAG.
+           MOVE CT-PAG   TO VAR-PAG.
+           MOVE SPACES   TO REG-ATR.
+           WRITE REG-ATR AFTER ADVANCING PAGE.
+           WRITE REG-ATR FROM CAB-01 AFTER ADVANCING 1 LINE.
+           WRITE REG-ATR FROM WHITE-CAB AFTER ADVANCING 1 LINE.
+           MOVE 2  TO CT-LIN.
+       CABECALHO-02 SECTION.
+           MOVE CODISEC-SORT TO VAR-SEC.
+           IF NOT(SOMA-SEC = ZEROS) AND NOT(SOMA-DEP = ZEROS)
+               ADD SOMA-SEC TO SOMA-DEP
+               MOVE SOMA-SEC TO ROD-SEC
+               MOVE SOMA-DEP TO ROD-DEP
+               WRITE REG-ATR FROM RODAPE-SEC AFTER ADVANCING 2 LINE
+               WRITE REG-ATR FROM RODAPE-DEP AFTER ADVANCING 1 LINE
+               PERFORM CABECALHO-01
+               MOVE ZEROS TO SOMA-DEP
+               MOVE ZEROS TO SOMA-SEC
+           END-IF.
+           MOVE CODIDEP-SORT TO VAR-DEP.
+           IF CT-LIN = 2
+               WRITE REG-ATR FROM CAB-DEP AFTER ADVANCING 1 LINE
+                ADD 4        TO CT-LIN
+           ELSE
+               WRITE REG-ATR FROM CAB-DEP AFTER ADVANCING 2 LINE
+                ADD 5        TO CT-LIN
+           END-IF.
+           WRITE REG-ATR FROM CAB-SEC AFTER ADVANCING 1 LINE.
+           WRITE REG-ATR FROM CAB-02 AFTER ADVANCING 2 LINE.
+       CABECALHO-03 SECTION.
+           MOVE CODISEC-SORT TO VAR-SEC.
+           MOVE SOMA-SEC TO ROD-SEC.
+           ADD SOMA-SEC TO SOMA-DEP.
+           IF CT-LIN = 2
+              WRITE REG-ATR FROM RODAPE-SEC AFTER ADVANCING 1 LINE
+               WRITE REG-ATR FROM CAB-SEC AFTER ADVANCING 2 LINE
+                ADD 3        TO CT-LIN
+           ELSE
+               WRITE REG-ATR FROM RODAPE-SEC AFTER ADVANCING 2 LINE
+               WRITE REG-ATR FROM CAB-SEC AFTER ADVANCING 2 LINE
+                ADD 4        TO CT-LIN
+           END-IF.
+           MOVE ZEROS TO SOMA-SEC
+           WRITE REG-ATR FROM CAB-02 AFTER ADVANCING 2 LINE.
+       DETALHES SECTION.
+           IF VALVENDAS-SORT <= 1000
+               COMPUTE COMISSAO = VALVENDAS-SORT * (5/100)
+           ELSE IF VALVENDAS-SORT <= 3000
+               COMPUTE COMISSAO = VALVENDAS-SORT * (10/100)
+           ELSE
+               COMPUTE COMISSAO = VALVENDAS-SORT * (15/100)
+           END-IF.
+           COMPUTE SALBRUTO = SALFIXO-SORT + COMISSAO.
+           COMPUTE SALLIQUIDO = SALBRUTO - DESC-SORT.
+           MOVE CODIVEND-SORT TO VAR-COD.
+           MOVE NOME-SORT TO VAR-NOME.
+           MOVE SALFIXO-SORT TO VAR-FIXO.
+           MOVE COMISSAO TO VAR-COMISSAO.
+           MOVE SALBRUTO TO VAR-BRUTO.
+           MOVE DESC-SORT TO VAR-DESCONTO.
+           MOVE SALLIQUIDO TO VAR-LIQUIDO.
+           WRITE REG-ATR FROM DETALHE.
+           ADD SALLIQUIDO TO SOMA-SEC.
+
+
+       RODAPE SECTION.
+           MOVE SOMA-SEC TO ROD-SEC.
+           MOVE SOMA-DEP TO ROD-DEP.
+           WRITE REG-ATR FROM RODAPE-SEC AFTER ADVANCING 2 LINE.
+           WRITE REG-ATR FROM RODAPE-DEP AFTER ADVANCING 1 LINE.
+
+       FIM-SAIDA SECTION.
+           CLOSE REL-PAG.
