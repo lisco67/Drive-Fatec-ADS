@@ -5,7 +5,7 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 ## :alarm_clock: HORÁRIOS E SALAS: [clique aqui](https://www.fatecsp.br/paginas/grade_horaria.php#titulo1)
 
 ## 💀 Grade antiga
-### Disciplinas que não estarão disponíveis semestre que (vem em nenhum turno)
+### Disciplinas que não estarão disponíveis a partir do próximo semestre (ago/2026)
 - LHW (Laboratório de Hardware)
 - SO I (Sistemas Operacionais I)
 
