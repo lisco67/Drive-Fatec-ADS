@@ -1,0 +1,9 @@
+8 15
+A A A A A A A A A A A A A A A
+A E L L L L R L L L L L L A A
+A L L L L L R L L L B L L A A
+A L L L R R R L L B B L L A A
+A L L L R R R L L B L L L A A
+A B L L L L L L L B L L L A A
+A B B B L L L L L B L L A A A
+A F F F F F F F F F F L L S A

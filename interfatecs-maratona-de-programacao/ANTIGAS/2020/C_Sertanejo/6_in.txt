@@ -1,0 +1,26 @@
+25
+Saracura e Firmino
+Firmino e Uirapuru
+Uirapuru e Castrinho
+Castrinho e Rancharia
+Rancharia e Luado
+Luado e Quessada
+Quessada e Gusmao
+Gusmao e Isnard
+Isnard e Wanderley
+Wanderley e Nivaldo
+Nivaldo e Zelao
+Zelao e Bianor
+Bianor e Marquito
+Marquito e Domingos
+Domingos e Xande
+Xande e Araponga
+Araponga e Veloso
+Veloso e Edmar
+Edmar e Kauan
+Kauan e Heitor
+Heitor e Tiberio
+Tiberio e Josemar
+Josemar e Pitico
+Pitico e Onorio
+Zeninguem e Joninguem

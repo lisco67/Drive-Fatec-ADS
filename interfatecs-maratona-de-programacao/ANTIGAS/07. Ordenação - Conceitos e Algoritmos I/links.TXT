@@ -1,0 +1,14 @@
+----------------------------------------------------------
+Representação gráfica do funcionamento dos algoritmos
+----------------------------------------------------------
+https://visualgo.net/bn/sorting?slide=1
+
+----------------------------------------------------------
+Explicações dos algoritmos de ordenação e seus desempenhos
+----------------------------------------------------------
+https://www.ime.usp.br/~pf/algoritmos/aulas/ordena.html
+
+----------------------------------------------------------
+Funções auxiliares e implementação em Python
+----------------------------------------------------------
+https://panda.ime.usp.br/algoritmos/static/algoritmos/05-ordenacao.html

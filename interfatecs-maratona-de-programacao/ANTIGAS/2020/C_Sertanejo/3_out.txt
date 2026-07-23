@@ -1,0 +1,7 @@
+Bianor: 1
+Domingos: 1
+Uirapuru: 1
+Rancharia: 2
+Isnard: infinito
+Kauan: infinito
+Marquito: infinito
