@@ -1,0 +1,13 @@
+poo.atividades@yahoo.com.br
+
+
+Cabeçalho do email:
+
+Atividade 00 - Nome completo do aluno
+Abrir os códigos dos exercícios direto no email sem anexar código-fonte.
+
+
+Pede-se:
+- Entregar individualmente as atividades;
+- Abrir o código-fonte no próprio email (sem anexar arquivo).
+

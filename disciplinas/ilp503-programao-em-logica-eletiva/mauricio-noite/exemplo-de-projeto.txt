@@ -1,0 +1,30 @@
+progenitor(Lucas, Leticia).
+progenitor(Ana, Leticia).
+progenitor(Marcelo, Lucas).
+progenitor(Joelma, Lucas).
+progenitor(pedro, Ana).
+progenitor(Camila, Ana).
+progenitor(Marcos, Camila).
+progenitor(Rose, Camila).
+progenitor(Marcelo, Allan).
+progenitor(Joelma, Allan).
+progenitor(Marcelo, Daniela).
+progenitor(Joelma, Daniela).
+
+sexo(Lucas,masc).
+sexo(Ana,fem).
+sexo(Marcelo,masc).
+sexo(Marcos,masc).
+sexo(Allan,masc).
+sexo(Leticia,fem).
+sexo(Joelma,fem).
+sexo(Camila,fem).
+sexo(Rose,fem).
+sexo(Daniela,fem).
+
+pai(X,Y):- progenitor(X, Y), sexo(X, masc).
+mae(X,Y):- progenitor(X,Y), sexo(X, fem).
+irmao(X,Y):- progenitor(Z, X), progenitor(Z, Y), X \= Y.
+tio(X,Y):- pai(A, X), pai(A, Z), pai(Z, Y), sexo(X, masc).
+avo(X,Y):- pai(X, A), pai(A, Y), sexo(X, masc).
+ancestral(X,Y):- progenitor(X,_), progenitor(_,Y).

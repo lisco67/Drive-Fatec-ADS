@@ -1,0 +1,42 @@
+Atividade 05 - Aspirador com 2 pisos
+
+A = {
+oper(subir ; [[1; 0]; [X ; Y]; [X; Y]] ; [[2; 0]; [X ; Y]; [X; Y]] )
+oper(descer ; [[2; 0]; [X ; Y]; [X; Y]] ; [[1; 0]; [X ; Y]; [X; Y]] )
+oper(entrarSala1 ; [[Piso ; 0]; [X ; Y]; [X; Y]] ; [[Piso; 1]; [X ; Y]; [X; Y]]),
+oper(entrarSala2 ; [[Piso ; 0]; [X ; Y]; [X; Y]] ; [[Piso; 2]; [X ; Y]; [X; Y]]),
+oper(aspirar ; [[Piso ; 1]; [1 ; Y]; [X; Y]] ; [[Piso; 2]; [0 ; Y]; [X; Y]])
+oper(aspirar ; [[Piso ; 1]; [X ; 1]; [X; Y]] ; [[Piso; 2]; [X ; 0]; [X; Y]])
+oper(aspirar ; [[Piso ; 2]; [X ; Y]; [1; Y]] ; [[Piso; 2]; [X ; Y]; [0; Y]])
+oper(aspirar ; [[Piso ; 2]; [X ; Y]; [X; 1]] ; [[Piso; 2]; [X ; Y]; [X; 0]])
+oper(sair ; [[Piso ; Sala]; [X ; Y]; [X; Y]] ; [[Piso; 0]; [X ; Y]; [X; Y]] )
+}
+
+Quantos estados esse sistema possui?
+96
+
+
+Atividade 06 - Algoritmo de busca não determinística
+Estado Inicial: s0=[1;1;1]
+Estado Meta: G={[1;0;0];[2;0;0]}
+[aspirar, entrarsala2,aspirar,entrarsala1
+
+Atividade 07 - Algoritmo de busca sem ciclo
+s0=[1;1;1];
+G=[2;0;1];
+
+Atividade 08 - Jarros
+
+[X;Y]  onde x c {0;1;2;3} e Y c {0;1;2;3;4}
+Encontrar sequência de passos que deixe o jarro de 4L com 2L
+
+s0 = [0;0]
+meta = G[X,3]
+BUSCA EM LARGURA
+
+A solução foi encontrado no nível 6 da arvore
+
+Atividade 09 - 
+
+s0 = [E;E;E;E]
+G = {[D;D;D;D]}

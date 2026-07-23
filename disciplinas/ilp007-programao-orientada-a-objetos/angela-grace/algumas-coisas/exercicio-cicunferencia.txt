@@ -1,0 +1,41 @@
+class Circunferencia
+{
+
+     private float raio;
+     
+     public Circunferencia()
+     {
+     }
+     
+     public Circunferencia(float r)
+     {  
+           raio = r;
+     }       
+
+
+     public diametro()
+     {
+        return 2*raio;
+     }
+
+
+     public area()
+     {
+         return 3.14*raio*raio;
+     }
+}
+
+
+
+
+
+class TestaCirc
+{
+      public static void main (String args[])
+      {
+                Circunferencia c = new Cincunferencia(2);
+                System.out.print("O valor do diametro é %f", c.diametro());
+                System.out.print("O valor da area é %f", c.area());
+                 
+      } 
+}
