@@ -1,0 +1,23 @@
+Padrões de projeto - São arquiteturas testadas para construir softwares orientados à objetos flexíveis e sustentáveis.
+
+Os padrões ajudam a reduzir a complexidade do processo de design.
+
+Singleton Pattern (Padrão Único) - Padrão de projeto criacional.
+Garante que uma classe tenha apenas uma instância de si mesma e provê um ponto de acesso global para essa instância.
+
+Composite Pattern - A intenção é permitir que você componha objetos em estruturas de árvores e assim conseuir trabalhar com essas estruturas como se fossem objetos individuais.
+Faz parte dos conjuntos de padrões estruturais, além disso ele geralmente faz mais sentido em estruturas que podem ser tratadas hierarquicamente, ou seja um objeto dentro de outro objeto, dentro de outro objeto e assim por diante.
+
+Factory Method Pattern - Sugere que você substitua chamadas diretas de construção de objetos, por chamadas para um método fábrica especial. Os objetos ainda são criados através do operador "new", mas esse está sendo chamado dentro do método fábrica. Objetos retornados por um método fábrica geralmente são chamados de produtos.
+
+Prototype Pattern - 
+
+O padrão de protótipo delega o proceasso de clonagem para o próprio objeto que está sendo clonado. O padrão declara uma interface comum para todos os objetos que suportam clonagem. Essa interface permite que você clone um objeto sem acoplar seu código à classe daquele objeto. Geralmente, tal interface contém apenas um único método clonar.
+
+Padrões Criacionais - padrão de fábrica abstrata, padrão construtor, padrão de protótipo, padrão único
+
+Padrões estruturais - padrão adaptador, padrão de agregação, padrão ponte, padrão de composição, padrão container, padrão proxy
+
+Padrões comportamentais - padrão toplevelnavigation, padrão cardstack, padrão fill-in-the-blanks, padrão sortabletable, padrão breadcrumbs, padrão editinplace, padrão simplesearch, padrão wizard, padrão shoppingcart
+
+padrões de projeto de componentes - advancedsearch, helpwizard, searcharea, searchtips, searchresults, searchbox
