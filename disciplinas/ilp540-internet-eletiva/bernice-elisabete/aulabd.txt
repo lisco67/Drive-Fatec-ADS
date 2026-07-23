@@ -1,0 +1,3 @@
+senha: bdm2019!
+
+https://fatecspgov-my.sharepoint.com/personal/thiago_ribeiro_fatec_sp_gov_br/_layouts/15/onedrive.aspx?originalPath=aHR0cHM6Ly9mYXRlY3NwZ292LW15LnNoYXJlcG9pbnQuY29tLzpmOi9nL3BlcnNvbmFsL3RoaWFnb19yaWJlaXJvX2ZhdGVjX3NwX2dvdl9ici9FazVHbkpvdWtyaEltTDhtX0syVm9zSUJUanNjYWJyNG4wbTRMN3o1NjF2ekpnP3J0aW1lPTU0ZXRmMFZkMTBn&id=%2Fpersonal%2Fthiago%5Fribeiro%5Ffatec%5Fsp%5Fgov%5Fbr%2FDocuments%2FFATEC%2FBD%2FBD%20AULA%2FBD%20%2D%20CREATE%20LOAD

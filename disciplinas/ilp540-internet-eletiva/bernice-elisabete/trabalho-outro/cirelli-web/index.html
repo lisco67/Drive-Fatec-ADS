@@ -1,0 +1,90 @@
+<!Doctype html>
+<html>
+  <div id="fundo">
+    <head>
+      <link rel="stylesheet" href="style.css">
+      <script src="Ex06.js"></script>
+      <script src="Ex05.js"></script> 
+      <script src="Ex04.js"></script> 
+      <script src="Ex03.js"></script> 
+      <script src="Ex02.js"></script>
+      <script src="Ex01.js"></script> 
+
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+      <style>
+        .mySlides {display:none;}
+      </style>
+    </head>
+    <body onload="horas()">
+      <div id="txt"> </div>
+      <h1>média de notas</h1>
+      <form>
+        <p>Nota 1</p>
+        <input id="nota1" type="text"/>
+        <p>Nota 2</p>
+        <input id="nota2" type="text"/>
+        <br><br>
+        <input type="submit" OnClick="media_notas(nota1, nota2);"/>
+        <br><br>
+      </form>
+
+      <h1>peso imc</h1>
+      <form>     
+        <p>Peso</p>
+        <input id="peso" type="text"/>
+        <p><br>Altura</p>
+        <input id="altura" type="text"/>
+        <br><br>
+        <input type="submit" OnClick="calculaIMC(peso, altura);"/>
+        <br><br>
+      </form>
+
+      <form>
+        <h1>nomes ordenados</h1>
+        <p>Quantos nomes deseja ordenar?</p><br>
+        <input id="n" type="text"/>
+        <input type="submit" OnClick="nome_asc(n);"/>
+        <br><br>
+      </form>
+
+      <form>
+        <h1>exercício Class aluno</h1>
+        <p>Nome</p><br>
+        <input id="nome" type="text"/> 
+        <p>Curso</p><br>
+        <input id="curso" type="text"/>
+        <p>Matricula</p><br>
+        <input id="mat" type="text"/> 
+        <br><br>
+        <input type="submit" OnClick="aluno(nome, mat, curso);"/>
+        <br><br>
+      </form>
+      <form>
+        <h1>horas exercício</h1>
+        <input type="button" value="Data" OnClick="data_corr();"/>
+      </form>
+      <h1>slides</h1>
+      <div class="w3-content w3-section" style="max-width:500px">
+        <img class="mySlides" src="Forro.jpg" style="width:100%">
+        <img class="mySlides" src="Forro2.jpg" style="width:100%">
+      </div>
+      <script>
+        var myIndex = 0;
+        carousel();
+        
+        function carousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          myIndex++;
+          if (myIndex > x.length) {myIndex = 1}    
+          x[myIndex-1].style.display = "block";  
+          setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </body>
+  </div>
+</html>

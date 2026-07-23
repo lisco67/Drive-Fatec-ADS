@@ -1,0 +1,98 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title> Enquete: Dying Light </title> 
+		<style>
+			#text2{resize:none;}
+		</style>
+	</head>
+	<body>
+		<h1>Cadastro</h1>
+		<form name="form1" id="form1" action="mailto:seuemail@edu.com" method="post">
+			<p>
+				<label for="name1">Nome</label>
+				<input type="text" name="name1" id="name1" size="30" maxlength="30" placeholder="Digite o seu nome" 
+				       value="Nome..." required="required" autofocus />
+			</p>		
+			<p>
+				<label for="email1">Email</label>
+				<input type="email" name="email1" id="email1" size="50" maxlength="50" placeholder="Digite o seu email"
+				       required="required" />
+			</p>			
+			<p>
+				<label for="password1">Senha</label>
+				<input type="password" name="password1" id="password1" size="10" maxlength="10" placeholder="Digite a senha" 
+				       required="required"/>
+			</p>					
+			<p>
+				<label for="age1">Idade</label>
+				<input type="number" name="age1" id="age1" min="1" max="99" step="1" required="required" />
+			</p>			
+			<p>
+				<h3>Modo Favorito</h3>
+				<label for="escolaridade1">Dying Light</label> 
+				<input type="radio" name="escolaridade1" value="s" /> 
+				<label for="escolaridade1">The Following</label>
+				<input type="radio" name="escolaridade1" value="n" />
+			</p>
+			<p>
+				<h3>Joga Invasão Zumbi? </h3>
+				<label for="escolaridade1">Sim</label> 
+				<input type="radio" name="escolaridade1" value="s" /> 
+				<label for="escolaridade1">Não</label>
+				<input type="radio" name="escolaridade1" value="n" />
+			</p>
+			<p>
+				<h3>Já platinou o jogo ao menos uma vez?</h3>
+				<label for="escolaridade1">Sim</label> 
+				<input type="radio" name="escolaridade1" value="s" />
+				<label for="escolaridade1">Não</label>
+				<input type="radio" name="escolaridade1" value="n" />
+			</p>
+			<p>
+				<h3>Atividades favoritas</h3>
+				<label for="games1">Parkour</label>
+				<input type="checkbox" name="games1" id="games1" value="g" checked/> <br/>
+				<label for="cinema">Dirigir</label>
+				<input type="checkbox" name="cinema1" id="cinema1" value="c" checked/> <br/>
+				<label for="natação1">Cortar Zumbis</label>
+				<input type="checkbox" name="natação1" id="natação1" value="n" checked/> <br/>
+			</p>
+			<!-- <select name="sel1" id="sel1" size="6" multiple>
+				<option name="opt" value="opc" selected="select"></option>
+				<option name="opt1" value="opc1">Opção um</option>
+				<option name="opt2" value="opc2">Opção dois</option>
+				<option name="opt3" value="opc3">Opção três</option>
+				<option name="opt4" value="opc4">Opção quatro</option>
+				<option name="opt5" value="opc5">Opção cinco</option>
+			</select> -->
+			<p>
+				<label for="text1">Outros hobbies</label> <br/>
+				<textarea name="text1" id="text1" cols="25" rows="4" placeholder="Comente" maxlength="250"></textarea>
+			</p>
+			<!-- <p>
+				<label for="text2">Texto desabilitado</label> <br/>
+				<textarea name="text2" id="text2" cols="25" rows="1" placeholder="Comente" maxlength="250" readonly="readonly"
+				disabled="disabled">Textinho dentro da área, apenas leitura!</textarea>
+			</p> -->
+			<p>
+				<label for="file1">Arquivo</label> <br/>
+				<input type="file" />
+			</p>
+			<p>
+				<label for="color1">Cor favorita</label>
+				<input type="color" name="color1" id="color1" />
+			</p>			
+			<p>
+				<input type="submit" value="Enviar dados" />
+				<input type="reset" value="Limpar"/>
+				<!-- <input type="image" src="C:\Users\aluno\Desktop\html\Imagens\gaszombie.jpg" width="50" height="35" alt="Gas Zombie" title="Gas Zombie" /> -->
+				<!-- <button type="submit" value"Enviar">
+					<img src"C:\Users\aluno\Desktop\html\Imagens\gaszombie.jpg" width="75" height="100" title="Enviar" />
+				</button> -->
+				<input type="button" value="Botão" onclick="alert('Acabou!');"/>
+			</p>
+		</form>
+	</body>
+</html>

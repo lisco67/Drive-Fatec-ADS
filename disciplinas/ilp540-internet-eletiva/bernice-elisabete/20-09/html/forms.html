@@ -1,0 +1,93 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title> Formulários </title> 
+		<style>
+			#text2{resize:none;}
+		</style>
+	</head>
+	<body>
+		<h1>Formulário</h1>
+		<form name="form1" id="form1" action="mailto:seuemail@edu.com" method="post">
+			<p>
+				<label for="nome1">Nome</label>
+				<input type="text" name="nome1" id="nome1" size="30" maxlength="30" placeholder="Digite o seu nome" 
+				       value="Conteúdo inicial" required="required" autofocus />
+			</p>		
+			<p>
+				<label for="email1">Email</label>
+				<input type="email" name="email1" id="email1" size="50" maxlength="50" placeholder="Digite o seu email"
+				       required="required" />
+			</p>			
+			<p>
+				<label for="senha1">Senha</label>
+				<input type="password" name="senha1" id="senha1" size="10" maxlength="10" placeholder="Digite a senha" 
+				       required="required"/>
+			</p>			
+			<p>
+				<label for="range1">Number</label>
+				<input type="range" name="range1" id="range1" min="0" max="10" step="2" />
+			</p>			
+			<p>
+				<label for="number1">Number</label>
+				<input type="number" name="number1" id="number1" min="0" max="10" step="2" />
+			</p>			
+			<p>
+				<label for="date1">Data</label>
+				<input type="date" name="date1" id="date1" />
+			</p>	
+			<p>
+				<h3>Enquete</h3>
+				<p><strong> Escolaridade </strong> </p>
+				<label for="escolaridade1">Sim</label> 
+				<input type="radio" name="escolaridade1" value="s" /> <br/>
+				<label for="escolaridade1">Não</label>
+				<input type="radio" name="escolaridade1" value="n" />
+			</p>
+			<p>
+				<h3>Hobby</h3>
+				<label for="games1">Games</label>
+				<input type="checkbox" name="games1" id="games1" value="g" checked/> <br/>
+				<label for="cinema">Cinema</label>
+				<input type="checkbox" name="cinema1" id="cinema1" value="c" checked/> <br/>
+				<label for="natação1">Natação</label>
+				<input type="checkbox" name="natação1" id="natação1" value="n" checked/> <br/>
+			</p>
+			<select name="sel1" id="sel1" size="6" multiple>
+				<option name="opt" value="opc" selected="select"></option>
+				<option name="opt1" value="opc1">Opção um</option>
+				<option name="opt2" value="opc2">Opção dois</option>
+				<option name="opt3" value="opc3">Opção três</option>
+				<option name="opt4" value="opc4">Opção quatro</option>
+				<option name="opt5" value="opc5">Opção cinco</option>
+			</select>
+			<p>
+				<label for="text1">Texto para comentários</label> <br/>
+				<textarea name="text1" id="text1" cols="25" rows="4" placeholder="Comente" maxlength="250"></textarea>
+			</p>
+			<p>
+				<label for="text2">Texto desabilitado</label> <br/>
+				<textarea name="text2" id="text2" cols="25" rows="1" placeholder="Comente" maxlength="250" readonly="readonly"
+				disabled="disabled">Textinho dentro da área, apenas leitura!</textarea>
+			</p>
+			<p>
+				<label for="file1">Arquivo</label> <br/>
+				<input type="file" />
+			</p>
+			<p>
+				<label for="color1">Color</label>
+				<input type="color" name="color1" id="color1" />
+			</p>			
+			<p>
+				<input type="submit" value="Enviar dados" />
+				<input type="reset" value="Limpar"/>
+				<!-- <input type="image" src="C:\Users\aluno\Desktop\html\Imagens\gaszombie.jpg" width="50" height="35" alt="Gas Zombie" title="Gas Zombie" /> -->
+				<!-- <button type="submit" value"Enviar">
+					<img src"C:\Users\aluno\Desktop\html\Imagens\gaszombie.jpg" width="75" height="100" title="Enviar" />
+				</button> -->
+				<input type="button" value="Botão" onclick="alert('Acabou!');"/>
+			</p>
+		</form>
+	</body>
+</html>

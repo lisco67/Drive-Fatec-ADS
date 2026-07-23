@@ -1,0 +1,35 @@
+prova Arnaldo:
+
+1) arquivo que determina nologinshell
+R: ~/.bashrc
+
+2) Partições na instalação
+R: boot swap e raiz
+
+3) Pode-se evitar poluição... Qual a forma correta de direcionar as mensagens e erros para esse arquivo?
+R: 2> /dev/null
+
+4) Podemos indicar na linha de comando ... o encadeamento de comandos ... Quais os simbolos de encadeamento para executar o 2° se o 1° falhar, executar o 2° se o 1° funcionar, executar os dois
+R: ||&&;
+
+5) Como adicionar "/home/joao/bin" na variável PATH:
+R: PATH=$PATH;/home/joao/bin (b)
+
+6) Qual comando é utilizado pra listar arq ou dir que iniciem com 1 letra maiúscula + 3 caracteres quaisquer e termina com número entre 10 e 39
+R: ls -l [A-Z]???[1-3][0-9] (e)
+
+7) Qual comando, em notação octal, fornece/nega as permissões de acesso relacionados abaixo e que tbm ative os bits suid  e sticky (t) para o arquivo meu-arq, no dir corrente
+	Dono => RW + User => WX + outros => WX
+R: chmod 5635
+
+8) Vlr da umask para
+	dir: dono:R-X, grupo: RW-, outros: -WX
+	arq: dono:R--, grupo: RW-, outros: -W-
+R: 214
+
+9) Comando chmod para: Dono => RW + User => RX + outros => WX
+R: chmod 6653 meu-arq
+
+10) Qual comando é utilizado pra listar arq ou dir que iniciem com 1 letra maiúscula + quaisquer e termina com número entre 10 e 19
+R: ls -l [A-Z]*[1][0-9]
+

@@ -1,0 +1,99 @@
+#titulo1 {
+	text-transform: lowercase;
+	color: light-green;
+	text-shadow: 3px 2px gray;
+	}
+	
+#corpo { 
+	background-color:brown;
+	color: green;
+	background-image: url("Imagens/dyinglight.jpg");
+	background-repeat:no-repeat;
+	background-position: center;
+	background-size: contain;
+	}
+#tesoura {
+	text-decoration: underline;
+	font-size: 25px;
+	color: gray;
+	font-style: oblique;
+	line-height: 140%;
+	letter-spacing: 10px;
+	font-family: Times New Roman;
+}
+
+#img1 {border:groove; border-color: red;
+border-width: 10px;
+padding: 15px;
+float:left;
+vertical-align: top;}
+
+#img2 {margin:20px;
+float:right;
+border: dotted;
+border-width: 10px;}
+
+#div1 {clear: both;
+	   width: 350px;}
+	   
+#div1 img{width: 100%;}
+
+h1[title] {border:groove;
+			border-width: 10px;}
+			
+span[class="exemplo"] {color: red;}
+
+<head>
+ <style>     
+ div > p:first-child {
+   color: red; }
+  h1[title] {color: green; }
+  span[class="classe1"] 
+    {color: blue; }
+  body > p {font-style: italic; }
+  
+h1 + h2 {color: cyan;}
+span, div {background: tan;}
+:not(p) {margin-left: 50px;}
+p:nth-child(3) { 
+   text-decoration: underline;}
+</style>
+</head>
+
+p::before{
+	content:url("img.gif");
+	margin-right:10x;
+}
+
+ul.img  {list-style-image: url("imagem1.jpg");}
+ol.roma  {list-style: upper-roman  inside;}
+ul.circle  {list-style-type: circle;}
+ol.alpha  {list-style-type: lower-alpha;}
+
+<style>
+  table  {empty-cells: hide;
+  width: 300px; height: 300px;
+  border-collapse: separate; 
+  border-spacing: 5px; }         
+  th, tr, td {border: solid;}
+  caption {caption-side: bottom;} 
+  
+  *    {padding: 0; margin: 0;}
+ ul  {list-style-type: none; margin: 10px;}
+ li   {margin-bottom: 2px;}
+ a   {color: #fff; padding-left:10px;
+      background-color: #0000ff;}
+ li a:hover  {background-color: #ff0000; 
+	     margin-left: 10px;}
+
+#container2 { 
+width: 50%; height:450px;
+border: dotted 5px; padding: 65px;	  
+background: #f00 url("Imagens/dyinglight.jpg") 
+no-repeat; background-size: cover;
+-webkit-background-clip: baorder-box;
+-moz-background-clip: border-box;
+background-clip: border-box;
+color: maroon; 
+}
+

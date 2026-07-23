@@ -1,0 +1,11 @@
+<!Doctype html>
+	<head>
+	</head>
+	<body>
+		<h1>JavaScript</h1>
+		opcao:<input type="text" id="opc"
+			placeholder="Digite A(FATEC-SP) B(Google) e C(W3Schools)"/> // placeholder = dica 
+		<input type="button" value="go" onclick="carregar();"/>
+	<script src="script2.js"></script> //arquivo externo
+	</body>
+</html>

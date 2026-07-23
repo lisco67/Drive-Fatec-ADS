@@ -1,0 +1,38 @@
+<!doctype html>
+<html> 
+	<head>
+      <Meta charset="utf-8" />
+        <title>Cadastro</title> 
+    </head>
+	<body> 
+      <h2>Formulário</h2>  
+        
+     <form method="post" action="insert7.php">
+	   <p>
+	      Nome: <input type="text" name="fnome" placeholder="Nome" />
+       </p><p>
+	      Sobrenome: <input type="text" name="fsbnome" placeholder="Sobrenome" />
+	   </p><p>
+	     E-mail: <input type="email" name="femail" placeholder="E-Mail" />
+	   </p><p>
+         Sexo: <input type="radio" name="fsex" value="m" checked> M
+	    <input type="radio" name="fsex" value="f"> F
+       </p><p>
+	     Idade:	<select name="fidade">
+			<option></option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+		  </select>
+	   </p><p>
+	     <input type="submit" value="Cadastrar" />
+       </p><p>
+         <a href="view7.php">Exibir listagem</a>
+        </p>     
+</form>
+
+    </body> 
+</html> 

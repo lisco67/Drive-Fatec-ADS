@@ -1,0 +1,10 @@
+#txt { background-color: black;
+       text-align: center;
+       font-weight: bold;
+       color: red;
+       height: 20px;
+       width: 12%;
+}
+
+#fundo {background-color: CornflowerBlue;
+}

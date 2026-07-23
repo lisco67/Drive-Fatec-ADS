@@ -1,0 +1,107 @@
+<!Doctype html>
+<html>
+	<head>
+		<script> 
+		
+			function Livro(tit, aut) {    // Função construtora
+			 this.titulo = tit;              // Propriedade titulo
+			 this.autor = aut;            // Propriedade autor
+			}
+
+			let meuLivro = new Livro ("CSS3", "Maujor"); 
+			   console.log(meuLivro.titulo);
+				console.log(meuLivro.autor);
+
+			let outroLivro = new Livro ("PHP", "Niederauer"); 
+			   console.log(outroLivro.titulo);
+				console.log(outroLivro.autor);
+				
+			let Cliente = function(nome, email) {
+		        this.nome = nome;
+		        this.email = email;
+			}
+			
+		    let Cassio = new Cliente("Cássio", "cassio@fatecsp.br"); 
+			  Cassio.email="altera_email@fatecsp.br";
+			  Cassio.idade=22;  
+			  
+			let Antonio = Object.create(Cliente);
+			   Antonio.nome= "Antônio";
+			   Antonio.email = "antonio@fatecsp.br";
+				for (i in Antonio) {
+					console.log(Antonio[i]);
+				}
+				 
+			let hoje = Date( );
+				console.log(hoje);
+			let hoje1 = new  Date( );  // Acessa a data corrente. 
+				console.log(hoje1);
+			let natal = new Date("Dec 25 2019");
+				console.log(natal);
+			let dt1 = new Date(2019,04,24,12,00,33);
+				console.log(dt1);
+			let ano1 = dt1.getDate();
+				console.log(ano1);
+			
+			let descBrasil = new Date("Apr 22 1500");
+			let dia = descBrasil.getDate( );     // 22
+				console.log(dia);
+			let mes = descBrasil.getMonth( );  // 3
+				console.log(mes);
+			let ano = descBrasil.getFullYear( );  // 1500
+				console.log(ano);
+			let semana = new  Date( ).getDay( );  // 3 (Quarta-feira)
+				console.log(semana);
+			let nascer = new Date("Mar 02 2000");
+			let semana_n = nascer.getDay();
+				console.log(semana_n);
+				
+			let tempo = new  Date ( );
+			let hh = tempo.getHours( );            // Horário local
+			let mm = tempo.getMinutes( );
+			let ss = tempo.getSeconds( );
+				document.write(hh + ":" + mm + ":" + ss + "<br>");
+			
+			let ddd = new Date()
+				dddd = ("0" + ddd.getDate()).slice(-2);
+			let mmm = new Date()
+				mmmm = ("0" + mmm.getMonth()).slice(-2);
+			let aaa = new Date()
+				aaaa = aaa.getFullYear()
+				document.write(dddd + "/" + mmmm + "/" + aaaa + "<br>");
+				
+			let x = new Date().getDay();
+			let dia_da_semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+				document.write(dia_da_semana[x] + "<br>");
+				
+			let dat = new  Date( );
+			document.write(dat.toDateString( ) + "<br />");
+			document.write(dat.toUTCString( ) + "<br />");
+			document.write(dat.toLocaleString( ) + "<br />") ;
+			document.write(dat.toLocaleDateString( )+"<br>");
+			document.write(dat.toLocaleTimeString( )+ "<br >")
+			document.write(dat.toString( ) + "<br />");
+			
+			let milsegs1 = new Date(2017, 4, 26, 09, 30, 00);
+			document.write(milsegs1.valueOf( ) + "<br />");
+			let milsegs2 =Date.parse("May 26 2017 09:30:00" ); 
+			document.write( milsegs2+ "<br>");
+			let milsegsUTC = Date.UTC(2017,4,26);
+			document.write(milsegsUTC + "<br />");
+			
+			console.log( Math.SQRT2);
+			console.log( Math.SQRT1_2);
+			console.log( Math.PI);
+			
+			console.log(Math.sqrt(144));
+			console.log(Math.pow(3,2));
+			console.log(Math.abs(-1));
+			console.log(Math.min(5,9,3));
+
+		</script>
+	</head>
+	<body>
+		<h1>JavaScript</h1>
+	<script src="0111.js"></script> <!-- arquivo externo -->
+	</body>
+</html>

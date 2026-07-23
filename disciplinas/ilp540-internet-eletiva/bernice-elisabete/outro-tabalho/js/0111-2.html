@@ -1,0 +1,53 @@
+
+<!Doctype html>
+<html>
+	<head>
+		<script> 
+		
+			window.setTimeout("alert('Acho que alguém acaba de ser hackeado...')",3000);
+			let i = 0;
+			function cont( ) {
+				console.log(i++); 
+			}
+
+
+			let jan;
+			   function janelinha( ) {
+				jan = window.open ("http://www.google.com", "jan", "width=400, height=200, top=50, left=90");
+				jan.focus( ); //Não quebre a linha do window.open()...
+				} 
+			   
+		    let btn = document.createElement("button");
+			let txt = document.createTextNode("Abre jan1");
+			btn.appendChild(txt);
+			
+			btn.onclick = function ( ) {
+				jan1 = window.open("", "jan1", "width=400, height=200, top=300, left=200");
+				jan1.document.write("Escrevendo..."); 
+				jan1.focus( ); 
+		    }
+			
+			btn = document.createElement("button");
+			txt = document.createTextNode("Fecha jan1");
+			btn.appendChild(txt);
+			btn.onclick = function ( ) {
+				   jan1.close( ); 
+			}
+			
+			function meuScroll( ) { 
+				window.scrollTo(0,1000);
+			} 
+		     
+
+		</script>
+	</head>
+	<body>
+		<h1>JavaScript</h1>
+		<button onclick="janelinha( );">Janela</button>
+		<button onclick="meuScroll( )">Rolando a tela...  </button><p>Gere uma barra de rolagem para o teste.</p>
+		<button onclick="window.print(  );"> Imprimir </button>
+		<button onclick="window.stop(  );"> Parar </button>
+		 
+		<script src="0111.js"></script> <!-- arquivo externo -->
+	</body>
+</html>

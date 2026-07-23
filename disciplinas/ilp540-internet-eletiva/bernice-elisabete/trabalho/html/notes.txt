@@ -1,0 +1,6 @@
+site: caniuse ==> saber o que pode ser usado na versão
+
+-- Página inicial ==> index.html
+<img src="C:\Users\aluno\Desktop\ILP-540\pagina\Imagens\business.jpg" width="480px" height="480px" alt="480px" />
+**alt= texto alternativo (caso a imagem não apareça)
+padding

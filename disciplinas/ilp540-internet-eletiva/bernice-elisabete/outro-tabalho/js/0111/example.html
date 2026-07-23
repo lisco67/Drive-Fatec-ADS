@@ -1,0 +1,63 @@
+<!Doctype html>
+<html>
+	<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="Ex06.js"></script>
+    <!-- <script src="Ex05.js"></script> -->
+    <!-- <script src="Ex04.js"></script> -->
+    <!-- <script src="Ex03.js"></script> -->
+    <!-- 	<script src="Ex02.js"></script> -->
+    <script src="Ex01.js"></script> 
+	</head>
+
+	<body onload="horas()">
+    <div id="txt"> </div>
+    <h1>Média</h1>
+    <form>
+      <p>Nota 1</p>
+      <input id="nota1" type="text"/>
+      <p>Nota 2</p>
+      <input id="nota2" type="text"/>
+      <br><br>
+      <input type="submit" OnClick="media_notas(nota1, nota2);"/>
+      <br><br>
+    </form>
+
+    <h1>IMC</h1>
+    <form>     
+      <p>Peso</p>
+      <input id="peso" type="text"/>
+      <p><br>Altura</p>
+      <input id="altura" type="text"/>
+      <br><br>
+      <input type="submit" OnClick="calculaIMC(peso, altura);"/>
+      <br><br>
+    </form>
+
+    <form>
+      <h1>Nomes</h1>
+      <p>Quantos nomes deseja ordenar?</p><br>
+      <input id="n" type="text"/>
+      <input type="submit" OnClick="nome_asc(n);"/>
+      <br><br>
+    </form>
+
+    <form>
+      <h1>Classe Aluno</h1>
+      <p>Nome</p><br>
+      <input id="nome" type="text"/> 
+      <p>Curso</p><br>
+      <input id="curso" type="text"/>
+      <p>Matricula</p><br>
+      <input id="mat" type="text"/> 
+      <br><br>
+      <input type="submit" OnClick="aluno(nome, mat, curso);"/>
+      <br><br>
+    </form>
+
+    <form>
+      <h1>Horas</h1>
+      <input type="button" value="Data" OnClick="data_corr();"/>
+    </form>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+/*reset básico */
+*{margin:0; padding:0; }
+header, nav, section, aside, article, footer, figure {display:block;}
+
+/*Declaração do grid */
+#mainContainer {
+	display: grid;
+}
+/* Declaração das áreas do grid */
+.mainHeader {grid-area: h;}
+.mainNav {grid-area: n;}
+.mainSection {grid-area: s;}
+.mainAside {grid-area: a;}
+.mainFooter {grid-area: f;}
+
+/*Configuração Geral */
+#mainContainer {
+	margin: 0 auto; }
+.mainHeader {
+	background-color:red;
+	text-align:center;
+}
+.mainNav {
+	background-color: green;}
+.mainSection {
+	background-color:blue; }
+.mainAside {
+	background-color:yellow;}
+.mainFooter {
+	background-color:orange;
+	text-align:center;
+}
+
+.box{
+	box-sizing: border-box;
+	word-wrap: break-word;
+	padding: 20x;
+	font-family: sans-serif;
+	font-size: 1em; /* 1em = 16px (relativo) */ /*1rem = sempre o que defniu no body (fixo) */
+}
+
+li {
+	display: inline-block;
+	color: white;
+	}
+
+/*Breakpoints  - MOBILE first */
+
+@media screen and (max-width: 767px) {
+	#mainContainer {
+		grid-template-areas: /*Define layout */
+		'h'
+		'n'
+		's'
+		'a'
+		'f';
+	}
+	/* .mainNav { grid-area: h } sbrepoe uma area a outra */
+}
+
+@media screen and (min-width: 768px) {
+	#mainContainer{
+		grid-template-areas:
+		'h h'
+		'n n'
+		's a'
+		'f f';
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	#mainContainer {
+		grid-template-areas:
+		'h h'
+		'n n'
+		's a'
+		'f f';
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	#mainContainer {
+		max-width: 1400px;
+	}
+	#mainContainer {
+		grid-template-areas:
+		'h h h'
+		'n s a'
+		'f f f';
+	grid-template-rows: 25vh 60vh 25vh;
+	}
+	li {
+		display: block;
+	}
+}
