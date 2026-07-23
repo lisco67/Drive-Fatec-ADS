@@ -5,15 +5,10 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 ## :alarm_clock: HORÁRIOS E SALAS: [clique aqui](https://www.fatecsp.br/paginas/grade_horaria.php#titulo1)
 
 ## 💀 Grade antiga
-### Disciplinas que não estarão disponíveis semestre que vem em nenhum turno
+### Disciplinas que não estarão disponíveis semestre que (vem em nenhum turno)
 - LHW (Laboratório de Hardware)
 - SO I (Sistemas Operacionais I)
-### Mudanças de sigla
-- Engenharia de Software I: IES100 --> IES036  
-- Engenharia de Software II: IES200 --> IES037
-- Comunicação e Expressão: LPO001 --> COM141
-- Algoritmos e Lógica de Programação: IAL002 --> IAL027
-- Arquitetura e Organização de Computadores: IAC --> IAC012
+
 ### Minha disciplina morreu. E agora?
 1. Cursar disciplina equivalente
 2. Caso a sua matéria não exista mais de **forma alguma, nem equivalente,** você pode cursar uma disciplina de sua escolha para contar como **carga-horária** (é importante que a cargahorária seja a mesma)
@@ -21,7 +16,21 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 
 ❗[Orientações completas e lista de equivalências](/orientacoes-disciplinas-mortas.md)  
 💀[Disciplinas mortas](/disciplinas/~disciplinas-mortas)
+  
+### Mudanças nas disciplinas novas
+#### Disciplinas com alteração de sigla
+| Disciplina                |sigla antiga|sigla nova |
+|---------------------------|------------|-----------|
+| Engenharia de Software I  |   IES100   |  IES036   |  
+| Engenharia de Software II |   IES200   |  IES037   |
+| Comunicação e Expressão   |   LPO001   |  COM141   |
+| Alg. e Lógica de Prog.    |   IAL002   |  IAL027   |
+| Arq. e Org. de Comput.    |   IAC001   |  IAC012   |
 
+#### Disciplinas que foram fundidas ou divididas
+- Banco de dados -> dividas em I e II
+- Sistemas Operacionais I e II -> fundidas 
+---
 ## Outros
 💻 [Sobre estágio](/orientacao-estagio.md)  
 
