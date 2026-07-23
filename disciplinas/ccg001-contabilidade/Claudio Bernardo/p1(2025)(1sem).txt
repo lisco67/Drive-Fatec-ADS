@@ -1,0 +1,46 @@
+P1 Contabilidade
+
+1) Cite exemplos de como a Contabilidade pode ser útil para tomada de decisão por parte de a)Investidores, b) Empreendedores, c) Credores e d)Funcionários da área de sistemas de uma empresa.
+
+2) Descreva o Balanço Patrimonial, como ele é dividido e como pode ser interpretado da perspectiva financeira.
+
+3) A partir da equação fundamental da Contabilidade responda: se uma empresa tem um Ativo no valor de 100, um Passivo no valor de 70, qual o valor do Patrimônio Líquido? Qual a importância dessa equação para o entendimento de um negócio?
+
+
+4) Pense em uma situação real da sua vida (pessoal, familiar ou profissional) em que você teve que tomar uma decisão financeira ou de investimento. Reflita sobre como os conhecimentos de contabilidade que você aprendeu até agora poderiam ter ajudado você a tomar uma decisão melhor. Relacione ao menos dois conceitos contábeis com sua experiência. Se for o caso, simule uma experiência. 
+
+5) Decisão de Investimento: Liquidez x Retorno
+
+Contexto:
+
+A empresa SolarTech Ltda., do ramo de tecnologia para energia solar, possui R$ 1.000.000 disponíveis em caixa e está analisando três alternativas de investimento para aplicar esse capital excedente pelos próximos dois anos:
+
+* Alternativa A – Aplicação em Títulos Públicos Federais de Curto Prazo
+* Alta liquidez (resgate diário), retorno estimado: 9% ao ano
+
+* Alternativa B – Compra de Participação em Startup do Setor de Energia Limpa
+* Baixa liquidez (investimento travado por 2 anos), retorno estimado: 20% ao ano, com alto risco
+
+* Alternativa C – Aquisição de Equipamentos para ampliação da própria capacidade produtiva
+* Liquidez praticamente nula, retorno estimado: 12% ao ano, com risco operacional moderado
+
+Pergunta:
+
+Você foi chamado para assessorar a diretoria na escolha do investimento mais adequado. Com base nos conceitos de liquidez e retorno, elabore uma análise crítica de cada alternativa. Em sua resposta, aborde:
+
+* A relação entre liquidez e retorno em cada opção
+* O perfil de risco e impacto na rentabilidade da empresa.
+* A compatibilidade com a estratégia da empresa e o cenário econômico atual
+
+Ao final, recomende a melhor alternativa (ou uma combinação delas), justificando com base técnica e estratégica.
+
+
+Individual. 
+Entrega até hoje no final do dia 23h59.
+Arquivo em PDF.
+Entregar por WhatsApp no privado ou pelo Teams.
+Será verificado a utilização de IA. 
+
+Dúvidas fico a disposição.
+
+Professor Cláudio Bernardo
