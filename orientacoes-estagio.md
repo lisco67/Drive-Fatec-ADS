@@ -1,6 +1,4 @@
-# Formalização dos contratos de estágios em documen…
-
-## [**Formalização dos contratos de estágios em documento digitalizado**](https://sites.google.com/view/fatecsp-estagios/coronav%C3%ADrus?authuser=0)
+# [**Formalização dos contratos de estágios em documento digitalizado**](https://sites.google.com/view/fatecsp-estagios/coronav%C3%ADrus?authuser=0)
 
 ***Professores orientadores de estágio para ADS: Profª. Me. Cecília K. Adati e Prof. Me. Shigueo  Tomomitsu***
 
