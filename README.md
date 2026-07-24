@@ -2,7 +2,12 @@
 Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiLIPiZHDlnmf9lzSNSfIZeckuS)  
  📝 [Formulário de contribuição anônimo](https://forms.gle/232r8NBnMnpn1TK7A)
 
-## :alarm_clock: HORÁRIOS E SALAS: [clique aqui](https://www.fatecsp.br/paginas/grade_horaria.php#titulo1)
+## IMPORTANTE
+:alarm_clock: [Horários e salas](https://www.fatecsp.br/paginas/grade_horaria.php#titulo1)  
+
+💻 [Sobre estágio](/orientacoes-estagio.md)  
+
+🌍 [Matrícula de disciplinas em outra fatec](/orientacoes-disciplinas-em-outra-fatec.md)  
 
 ## 💀 Grade antiga
 ### Disciplinas que não estarão disponíveis a partir do próximo semestre (jan/2027)
@@ -30,12 +35,8 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 #### Disciplinas que foram fundidas ou divididas
 - Banco de dados -> dividas em I e II
 - Sistemas Operacionais I e II -> fundidas 
----
+
 ## Outros
-💻 [Sobre estágio](/orientacoes-estagio.md)  
-
-🌍 [Matricula de disciplinas em outra fatec](/orientacoes-disciplinas-em-outra-fatec.md)  
-
 💑 [Planilha de Networking](/networking-fatec.xlsx)  
 
 📝 Projetos pedagógicos e ementas:  
