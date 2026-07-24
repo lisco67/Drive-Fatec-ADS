@@ -32,7 +32,7 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 - Sistemas Operacionais I e II -> fundidas 
 ---
 ## Outros
-💻 [Sobre estágio](/orientacao-estagio.md)  
+💻 [Sobre estágio](/orientacoes-estagio.md)  
 
 📝 Projetos pedagógicos e ementas:  
     |_ [Grade antiga](/curriculo/proj-pedagogico-ads-antigo.pdf)  
