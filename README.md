@@ -34,6 +34,10 @@ Continuação do [antigo Drive](https://drive.google.com/drive/folders/1yqSr2BiL
 ## Outros
 💻 [Sobre estágio](/orientacoes-estagio.md)  
 
+🌍 [Matricula de disciplinas em outra fatec](/orientacoes-disciplinas-em-outra-fatec.md)  
+
+💑 [Planilha de Networking](/networking-fatec.xlsx)  
+
 📝 Projetos pedagógicos e ementas:  
     |_ [Grade antiga](/curriculo/proj-pedagogico-ads-antigo.pdf)  
     |_ [Grade nova](/curriculo/proj-pedagogico-ads-novo.pdf)
